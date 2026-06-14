@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cyan">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sheetal Bajaj | Portfolio - AI, ML & Data Science Focus</title>
+    <!-- Meta tags for SEO -->
+    <meta name="description" content="Portfolio of Sheetal Bajaj, an IT undergraduate and Data Science student focusing on AI, Machine Learning, and Web Development.">
+    <meta name="keywords" content="Sheetal Bajaj, Data Science, AI, ML, Web Development, IIT Madras, MAKAUT, Portfolio, Software Engineer">
+    <meta name="author" content="Sheetal Bajaj">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Style Sheet -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <!-- Background Glow Blobs -->
+    <div class="glow-blob blob-1"></div>
+    <div class="glow-blob blob-2"></div>
+    <div class="glow-blob blob-3"></div>
+    <div class="grid-overlay"></div>
+
+    <!-- Custom Cursor (Interactive) -->
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-dot"></div>
+
+    <!-- Sticky Navigation -->
+    <header id="main-header">
+        <div class="header-container">
+            <a href="#" class="logo-link" id="nav-logo">
+                <span class="logo-accent">&lt;</span>Sheetal Bajaj<span class="logo-accent"> /&gt;</span>
+            </a>
+            
+            <nav id="nav-menu">
+                <ul>
+                    <li><a href="#hero" class="nav-item active" id="nav-link-hero"><i data-lucide="home"></i><span>Home</span></a></li>
+                    <li><a href="#about" class="nav-item" id="nav-link-about"><i data-lucide="user"></i><span>About</span></a></li>
+                    <li><a href="#skills" class="nav-item" id="nav-link-skills"><i data-lucide="cpu"></i><span>Skills</span></a></li>
+                    <li><a href="#projects" class="nav-item" id="nav-link-projects"><i data-lucide="folder-git-2"></i><span>Projects</span></a></li>
+                    <li><a href="#education" class="nav-item" id="nav-link-education"><i data-lucide="graduation-cap"></i><span>Education</span></a></li>
+                    <li><a href="#certifications" class="nav-item" id="nav-link-certifications"><i data-lucide="award"></i><span>Certifications</span></a></li>
+                    <li><a href="#contact" class="nav-item" id="nav-link-contact"><i data-lucide="mail"></i><span>Contact</span></a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <!-- Theme Accent Customizer Control -->
+                <button class="action-btn" id="theme-panel-btn" title="Customize Accents" aria-label="Open Theme Accent Customizer">
+                    <i data-lucide="palette"></i>
+                </button>
+                <!-- Terminal Trigger Button -->
+                <button class="action-btn" id="terminal-trigger-btn" title="Open Shell Terminal" aria-label="Toggle Interactive CLI Terminal">
+                    <i data-lucide="terminal"></i>
+                </button>
+                <!-- Mobile Menu Button -->
+                <button class="action-btn mobile-menu-toggle" id="mobile-menu-btn" aria-label="Toggle navigation menu">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Theme Customizer Panel -->
+    <div class="theme-panel" id="theme-customizer">
+        <div class="theme-panel-header">
+            <h4>Accent Theme</h4>
+            <button class="close-btn" id="close-theme-panel"><i data-lucide="x"></i></button>
+        </div>
+        <div class="theme-options">
+            <button class="theme-opt-btn active" data-theme="cyan" style="--accent-color: #00f2fe;">
+                <span class="color-dot"></span> Cyan
+            </button>
+            <button class="theme-opt-btn" data-theme="purple" style="--accent-color: #a855f7;">
+                <span class="color-dot"></span> Purple
+            </button>
+            <button class="theme-opt-btn" data-theme="emerald" style="--accent-color: #10b981;">
+                <span class="color-dot"></span> Emerald
+            </button>
+            <button class="theme-opt-btn" data-theme="sunset" style="--accent-color: #f97316;">
+                <span class="color-dot"></span> Sunset
+            </button>
+        </div>
+        <div class="theme-mode-toggle">
+            <span>Dark / Light Mode</span>
+            <label class="switch">
+                <input type="checkbox" id="dark-mode-toggle" checked>
+                <span class="slider round"></span>
+            </label>
+        </div>
+    </div>
+
+    <!-- Main Content Wrapper -->
+    <main class="content-wrapper">
+        
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <!-- Canvas Particle Network Background -->
+            <canvas id="hero-particles" class="hero-particles-canvas"></canvas>
+            
+            <div class="container hero-container">
+                <div class="hero-text-content">
+                    <div class="badge-container">
+                        <span class="pulse-dot"></span>
+                        <span class="badge-text">Open For Opportunities</span>
+                    </div>
+                    <h1 class="hero-title">
+                        Hi, I'm <span class="gradient-text text-glow">Sheetal Bajaj</span>
+                    </h1>
+                    <h2 class="hero-subtitle">
+                        I am a <span id="typing-text" class="typed-role"></span><span class="cursor-pipe">|</span>
+                    </h2>
+                    <p class="hero-description">
+                        IT Undergraduate focusing on AI, Machine Learning, and Data Science. Dual-tracking my education at <strong>IIT Madras</strong> (B.S. Data Science) and <strong>MAKAUT</strong> (B.Tech IT) to build high-efficiency backends, optimize data pipelines, and craft accessible modern web applications.
+                    </p>
+                    
+                    <div class="hero-quick-stats">
+                        <div class="stat-card">
+                            <span class="stat-num">9.68</span>
+                            <span class="stat-label">B.Tech CGPA</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-num">Dual</span>
+                            <span class="stat-label">Degree Track</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-num">5+</span>
+                            <span class="stat-label">AI & Web Projects</span>
+                        </div>
+                    </div>
+
+                    <div class="hero-actions-container">
+                        <a href="#projects" class="btn btn-primary" id="hero-projects-cta">
+                            <span>Explore Projects</span>
+                            <i data-lucide="arrow-up-right"></i>
+                        </a>
+                        <a href="#contact" class="btn btn-secondary" id="hero-contact-cta">
+                            <span>Contact Me</span>
+                            <i data-lucide="mail"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- Social Links -->
+                    <div class="social-wrapper">
+                        <span class="social-title">Connect with me:</span>
+                        <div class="social-links">
+                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="LinkedIn Profile"><i data-lucide="linkedin"></i></a>
+                            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="GitHub Profile"><i data-lucide="github"></i></a>
+                            <a href="https://www.geeksforgeeks.org" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="GeeksforGeeks Profile"><i data-lucide="code-2"></i></a>
+                            <a href="https://kaggle.com" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="Kaggle Profile"><i data-lucide="database"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Avatar Side -->
+                <div class="hero-avatar-side">
+                    <div class="avatar-glow-ring"></div>
+                    <div class="avatar-outer-orbit">
+                        <div class="orbit-icon" style="--angle: 0deg;"><i data-lucide="binary"></i></div>
+                        <div class="orbit-icon" style="--angle: 120deg;"><i data-lucide="pie-chart"></i></div>
+                        <div class="orbit-icon" style="--angle: 240deg;"><i data-lucide="code-2"></i></div>
+                    </div>
+                    <div class="avatar-frame">
+                        <div class="avatar-glass">
+                            <!-- Easter Egg Tip: Double Click profile picture to open inbox dashboard -->
+                            <img src="1.webp" alt="Sheetal Bajaj" class="avatar-image" id="profile-avatar-img" onerror="this.style.display='none'; document.getElementById('avatar-fallback').style.display='flex';">
+                            <div class="avatar-fallback-container" id="avatar-fallback" style="display: none;">
+                                <div class="fallback-glow">SB</div>
+                                <svg class="avatar-vector" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M50 40C58.2843 40 65 33.2843 65 25C65 16.7157 58.2843 10 50 10C41.7157 10 35 16.7157 35 25C35 33.2843 41.7157 40 50 40Z" fill="currentColor" fill-opacity="0.1" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M78.5 75C78.5 63.9543 65.7401 55 50 55C34.2599 55 21.5 63.9543 21.5 75" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                            <!-- Tech Overlay -->
+                            <div class="tech-overlay-text text-overlay-left">SYS_ONLINE</div>
+                            <div class="tech-overlay-text text-overlay-right">AI_ENABLED</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator-container">
+                <a href="#about" aria-label="Scroll down to About section">
+                    <div class="mouse-wheel-scroller">
+                        <span class="wheel-dot"></span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tagline">Background & Summary</span>
+                    <h3 class="section-title">About Me</h3>
+                    <div class="title-underline"></div>
+                </div>
+                
+                <div class="about-grid">
+                    <div class="about-main-text">
+                        <p class="summary-paragraph">
+                            I am an ambitious <strong>Information Technology</strong> undergraduate with hands-on technical capabilities spanning Artificial Intelligence, Machine Learning algorithms, and scalable web architectures. I thrive on building efficient analytical backend infrastructures, optimizing complex data flows, and designing responsive software tools that address real-world system challenges.
+                        </p>
+                        <p class="summary-paragraph">
+                            What makes my educational path unique is my concurrent dual enrollment: pursing a <strong>B.Tech in IT at MAKAUT</strong> (maintaining a <strong>9.68 CGPA</strong>) while simultaneously completing a <strong>B.S. in Data Science & Applications at IIT Madras</strong>. This rigorous dual track provides me with a rare blend of classical computer science engineering foundations and advanced mathematical/data-driven intelligence.
+                        </p>
+
+                        <!-- Personal Stats Grid -->
+                        <div class="personal-highlights-grid">
+                            <div class="highlight-item">
+                                <div class="highlight-icon"><i data-lucide="map-pin"></i></div>
+                                <div class="highlight-details">
+                                    <span class="label">Location</span>
+                                    <span class="value">Kolkata, India</span>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-icon"><i data-lucide="mail"></i></div>
+                                <div class="highlight-details">
+                                    <span class="label">Email</span>
+                                    <span class="value">sheetalbajaj2025@gmail.com</span>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-icon"><i data-lucide="phone"></i></div>
+                                <div class="highlight-details">
+                                    <span class="label">Phone</span>
+                                    <span class="value">+91 8252128606</span>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-icon"><i data-lucide="globe"></i></div>
+                                <div class="highlight-details">
+                                    <span class="label">Languages</span>
+                                    <span class="value">English, Hindi</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Side Info Cards (Hobbies, Focus) -->
+                    <div class="about-side-cards">
+                        <!-- Dual Track Info Card -->
+                        <div class="about-card glass-card dual-track-card">
+                            <div class="card-icon-header">
+                                <i data-lucide="git-branch" class="accent-glow"></i>
+                                <h4>Dual Degree Path</h4>
+                            </div>
+                            <p>Balancing classical IT systems (B.Tech) with cutting-edge statistical data modeling (IIT Madras B.S. Data Science).</p>
+                            <div class="academic-timeline-micro">
+                                <div class="academic-node">B.Tech IT (MAKAUT) <span>9.68 CGPA</span></div>
+                                <div class="academic-node">B.S. Data Science (IITM) <span>Ongoing</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Hobbies Card -->
+                        <div class="about-card glass-card hobbies-card">
+                            <div class="card-icon-header">
+                                <i data-lucide="palette" class="accent-glow"></i>
+                                <h4>Creative Outlets</h4>
+                            </div>
+                            <div class="hobbies-list">
+                                <div class="hobby-item">
+                                    <i data-lucide="brush"></i>
+                                    <span>Painting</span>
+                                </div>
+                                <div class="hobby-item">
+                                    <i data-lucide="pen-tool"></i>
+                                    <span>Story Writing</span>
+                                </div>
+                            </div>
+                            <p class="hobby-description">Visual and narrative creativity fuels my structured problem-solving approach in programming.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills-section scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tagline">My Arsenal</span>
+                    <h3 class="section-title">Core Skills</h3>
+                    <div class="title-underline"></div>
+                </div>
+
+                <div class="skills-container">
+                    <!-- Category Tabs -->
+                    <div class="skills-tabs">
+                        <button class="skills-tab-btn active" data-category="all">All Skills</button>
+                        <button class="skills-tab-btn" data-category="programming">Languages</button>
+                        <button class="skills-tab-btn" data-category="datascience">Data & AI</button>
+                        <button class="skills-tab-btn" data-category="web">Web & Dev</button>
+                    </div>
+
+                    <!-- Skills Grid -->
+                    <div class="skills-grid" id="skills-grid-container">
+                        
+                        <!-- Python -->
+                        <div class="skill-card glass-card" data-category="programming datascience" data-skill-id="python">
+                            <div class="skill-info">
+                                <div class="skill-icon-name">
+                                    <i data-lucide="terminal" class="skill-icon"></i>
+                                    <h4>Python</h4>
+                                </div>
+                            </div>
+                            <p class="skill-desc">Primary language for data pipelines, AI models, custom simulators, and automated mathematical logic.</p>
+                            <div class="skill-projects-ref">Used in: <strong>SAKSHYA, EkaSruti, InstantBI, VyomDarpan</strong></div>
+                        </div>
+
+                        <!-- C++ -->
+                        <div class="skill-card glass-card" data-category="programming" data-skill-id="cpp">
+                            <div class="skill-info">
+                                <div class="skill-icon-name">
+                                    <i data-lucide="code-2" class="skill-icon"></i>
+                                    <h4>C++ Programming</h4>
+                                </div>
+                            </div>
+                            <p class="skill-desc">Utilized for speed-critical systems programming, algorithm optimizations, and object-oriented architectures.</p>
+                            <div class="skill-projects-ref">Used in: <strong>Data Structures, Competitive Programming</strong></div>
+                        </div>
+
+                        <!-- C -->
+                        <div class="skill-card glass-card" data-category="programming" data-skill-id="c">
+                            <div class="skill-info">
+                                <div class="skill-icon-name">
+                                    <i data-lucide="cpu" class="skill-icon"></i>
+                                    <h4>C Programming</h4>
+                                </div>
+                            </div>
+                            <p class="skill-desc">Applied for close-to-metal low-level memory allocation, operating system baselines, and execution tracing.</p>
+                            <div class="skill-projects-ref">Used in: <strong>Computer Systems Foundations</strong></div>
+                        </div>
+
+                        <!-- Data Science -->
+                        <div class="skill-card glass-card" data-category="datascience" data-skill-id="datascience">
+                            <div class="skill-info">
+                                <div class="skill-icon-name">
+                                    <i data-lucide="binary" class="skill-icon"></i>
+                                    <h4>Data Science</h4>
+                                </div>
+                            </div>
+                            <p class="skill-desc">Formulating data-driven predictions, statistical tests, mathematical model scaling, and machine learning pipelines.</p>
+                            <div class="skill-projects-ref">Used in: <strong>VyomDarpan, SAKSHYA, IITM Curriculum</strong></div>
+                        </div>
+
+                        <!-- Data Analysis -->
+                        <div class="skill-card glass-card" data-category="datascience" data-skill-id="dataanalysis">
+                            <div class="skill-info">
+                                <div class="skill-icon-name">
+                                    <i data-lucide="bar-chart-3" class="skill-icon"></i>
+                                    <h4>Data Analysis</h4>
+                                </div>
+                            </div>
+                            <p class="skill-desc">Data wrangling, cleansing operations, trend modeling, and rendering high-impact executive visualizations.</p>
+                            <div class="skill-projects-ref">Used in: <strong>InstantBI, Cisco Analytics Essentials</strong></div>
+                        </div>
+
+                        <!-- DBMS (SQL) -->
+                        <div class="skill-card glass-card" data-category="datascience web" data-skill-id="dbms">
+                            <div class="skill-info">
+                                <div class="skill-icon-name">
+                                    <i data-lucide="database" class="skill-icon"></i>
+                                    <h4>DBMS (SQL)</h4>
+                                </div>
+                            </div>
+                            <p class="skill-desc">Designing relational database systems, crafting complex JOIN queries, index optimization, and backend transactions.</p>
+                            <div class="skill-projects-ref">Used in: <strong>InstantBI, Database Management Systems</strong></div>
+                        </div>
+
+                        <!-- Web Development -->
+                        <div class="skill-card glass-card" data-category="web" data-skill-id="webdev">
+                            <div class="skill-info">
+                                <div class="skill-icon-name">
+                                    <i data-lucide="layout" class="skill-icon"></i>
+                                    <h4>Web Development</h4>
+                                </div>
+                            </div>
+                            <p class="skill-desc">Designing responsive, glassmorphic interfaces, routing pipelines, dashboard frontends, and dynamic DOM states.</p>
+                            <div class="skill-projects-ref">Used in: <strong>SAKSHYA, InstantBI, Portfolio</strong></div>
+                        </div>
+
+                        <!-- APIs & Integrations -->
+                        <div class="skill-card glass-card" data-category="web datascience" data-skill-id="apis">
+                            <div class="skill-info">
+                                <div class="skill-icon-name">
+                                    <i data-lucide="webhook" class="skill-icon"></i>
+                                    <h4>APIs & Integrations</h4>
+                                </div>
+                            </div>
+                            <p class="skill-desc">Designing, testing, and integrating RESTful endpoints, CORS management, and WebSocket streaming protocols.</p>
+                            <div class="skill-projects-ref">Used in: <strong>SAKSHYA, Postman Academy Expert</strong></div>
+                        </div>
+
+                        <!-- Data Structures & Algos -->
+                        <div class="skill-card glass-card" data-category="programming datascience" data-skill-id="dsa">
+                            <div class="skill-info">
+                                <div class="skill-icon-name">
+                                    <i data-lucide="git-fork" class="skill-icon"></i>
+                                    <h4>Data Structures</h4>
+                                </div>
+                            </div>
+                            <p class="skill-desc">Applying tree structures, graphs, sorting heuristics, and hash tables to solve high-complexity puzzles.</p>
+                            <div class="skill-projects-ref">Used in: <strong>Elite Coders Winter of Code, GFG Hackfest</strong></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects-section scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tagline">My Creations</span>
+                    <h3 class="section-title">Key Projects</h3>
+                    <div class="title-underline"></div>
+                </div>
+
+                <!-- Projects Filter Buttons -->
+                <div class="projects-filter">
+                    <button class="filter-btn active" data-filter="all">All Work</button>
+                    <button class="filter-btn" data-filter="ai-data">AI & Data Science</button>
+                    <button class="filter-btn" data-filter="web-apps">Web & Apps</button>
+                </div>
+
+                <!-- Projects Grid -->
+                <div class="projects-grid">
+                    
+                    <!-- VyomDarpan Card -->
+                    <div class="project-card glass-card scroll-item" data-category="ai-data" data-project-id="vyomdarpan">
+                        <div class="project-header">
+                            <div class="project-badge">Astronomical Calculation</div>
+                            <div class="project-links">
+                                <a href="https://vyomdarpan.vercel.app/" class="proj-link-btn" title="View Project Specs" onclick="event.stopPropagation();"><i data-lucide="external-link"></i></a>
+                            </div>
+                        </div>
+                        <h4 class="project-title">VyomDarpan</h4>
+                        <p class="project-short-desc">
+                            Calculated the foundational angular dimensions for the primary Yantras based on local latitude coordinates to construct structural astronomical alignments.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Astronomy</span>
+                            <span class="tag">Math Modeling</span>
+                            <span class="tag">Python</span>
+                        </div>
+                        <button class="view-details-btn">
+                            <span>Detail Specs</span>
+                            <i data-lucide="chevron-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- SAKSHYA Card -->
+                    <div class="project-card glass-card scroll-item" data-category="ai-data web-apps" data-project-id="sakshya">
+                        <div class="project-header">
+                            <div class="project-badge">AI Legal Assistant</div>
+                            <div class="project-links">
+                                <a href="#" class="proj-link-btn" title="View Project Specs" onclick="event.stopPropagation();"><i data-lucide="external-link"></i></a>
+                            </div>
+                        </div>
+                        <h4 class="project-title">SAKSHYA</h4>
+                        <p class="project-short-desc">
+                            Upload court judgment PDFs and instantly extract critical directives, compliance requirements, appeal recommendations, and risk flags with specialized AI assistant.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">LLM Processing</span>
+                            <span class="tag">AI Security</span>
+                            <span class="tag">LegalTech</span>
+                        </div>
+                        <button class="view-details-btn">
+                            <span>Detail Specs</span>
+                            <i data-lucide="chevron-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- InstantBI Card -->
+                    <div class="project-card glass-card scroll-item" data-category="ai-data web-apps" data-project-id="instantbi">
+                        <div class="project-header">
+                            <div class="project-badge">NLP Dashboard</div>
+                            <div class="project-links">
+                                <a href="#" class="proj-link-btn" title="View Project Specs" onclick="event.stopPropagation();"><i data-lucide="external-link"></i></a>
+                            </div>
+                        </div>
+                        <h4 class="project-title">InstantBI</h4>
+                        <p class="project-short-desc">
+                            Upload CSV/Excel, ask in plain English, and instantly get beautiful interactive dashboards powered by custom SQL analytics and a visual charting engine.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Data Analytics</span>
+                            <span class="tag">SQL Engine</span>
+                            <span class="tag">Dashboard</span>
+                        </div>
+                        <button class="view-details-btn">
+                            <span>Detail Specs</span>
+                            <i data-lucide="chevron-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- MediMitra Card -->
+                    <div class="project-card glass-card scroll-item" data-category="web-apps" data-project-id="medimitra">
+                        <div class="project-header">
+                            <div class="project-badge">Mobile Health</div>
+                            <div class="project-links">
+                                <a href="#" class="proj-link-btn" title="View Project Specs" onclick="event.stopPropagation();"><i data-lucide="external-link"></i></a>
+                            </div>
+                        </div>
+                        <h4 class="project-title">MediMitra</h4>
+                        <p class="project-short-desc">
+                            Smart medicine reminder application built with Flutter/Firebase. Tracks medications, sends timely dosage notifications, and manages patient schedule pipelines.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Flutter</span>
+                            <span class="tag">Firebase</span>
+                            <span class="tag">Push Alert</span>
+                        </div>
+                        <button class="view-details-btn">
+                            <span>Detail Specs</span>
+                            <i data-lucide="chevron-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- EkaSruti Card -->
+                    <div class="project-card glass-card scroll-item" data-category="ai-data" data-project-id="ekasruti">
+                        <div class="project-header">
+                            <div class="project-badge">Speech Translation</div>
+                            <div class="project-links">
+                                <a href="#" class="proj-link-btn" title="View Project Specs" onclick="event.stopPropagation();"><i data-lucide="external-link"></i></a>
+                            </div>
+                        </div>
+                        <h4 class="project-title">EkaSruti</h4>
+                        <p class="project-short-desc">
+                            AI-based pipeline converting live speech to multilingual captions, simplifying complex text processing workflows and offline speech alignments.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Speech AI</span>
+                            <span class="tag">NLP Pipeline</span>
+                            <span class="tag">Multilingual</span>
+                        </div>
+                        <button class="view-details-btn">
+                            <span>Detail Specs</span>
+                            <i data-lucide="chevron-right"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Details Sidebar / Drawer Panel (Interactive) -->
+        <aside class="project-drawer" id="project-details-drawer">
+            <div class="drawer-backdrop" id="drawer-backdrop-el"></div>
+            <div class="drawer-content">
+                <div class="drawer-header">
+                    <span class="drawer-badge" id="drawer-category">Category</span>
+                    <button class="close-btn" id="close-drawer" aria-label="Close Project Drawer"><i data-lucide="x"></i></button>
+                </div>
+                
+                <div class="drawer-body">
+                    <h3 class="drawer-title" id="drawer-title">Project Name</h3>
+                    <div class="drawer-tags" id="drawer-tags-list">
+                        <!-- Dynamic Tags -->
+                    </div>
+                    
+                    <div class="drawer-section">
+                        <h5>Project Overview</h5>
+                        <p id="drawer-full-desc">Detailed project description goes here.</p>
+                    </div>
+
+                    <div class="drawer-section">
+                        <h5>Technical Stack</h5>
+                        <ul class="drawer-tech-specs" id="drawer-tech-list">
+                            <!-- Dynamic Tech details -->
+                        </ul>
+                    </div>
+
+                    <!-- Simulation Component (Interactive Wow Factor) -->
+                    <div class="drawer-section simulation-container">
+                        <h5>Interactive Prototype Simulator</h5>
+                        <div class="interactive-simulator" id="drawer-simulator">
+                            <!-- Dynamic Prototype simulator code depending on project -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="drawer-footer">
+                    <button class="btn btn-secondary" id="drawer-close-action">Close Specs</button>
+                    <button class="btn btn-primary" id="drawer-link-action">
+                        <span>Project Source</span>
+                        <i data-lucide="external-link"></i>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Education Section -->
+        <section id="education" class="education-section scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tagline">Academic Roadmap</span>
+                    <h3 class="section-title">Education</h3>
+                    <div class="title-underline"></div>
+                </div>
+
+                <div class="timeline-container">
+                    <div class="timeline-line"></div>
+                    
+                    <!-- Item 1: IIT Madras -->
+                    <div class="timeline-item right scroll-item">
+                        <div class="timeline-dot"><i data-lucide="graduation-cap"></i></div>
+                        <div class="timeline-card glass-card">
+                            <div class="timeline-header">
+                                <span class="timeline-duration">2025 - Present</span>
+                                <h4 class="institute-title">Indian Institute of Technology, Madras</h4>
+                            </div>
+                            <h5 class="degree-title">B.S. Degree in Data Science & Applications</h5>
+                            <p class="timeline-desc">Specialized learning focusing on computational mathematics, data modeling, statistical distributions, predictive algorithms, and system integrations.</p>
+                            <span class="grade-badge">Enrolled Track</span>
+                        </div>
+                    </div>
+
+                    <!-- Item 2: MAKAUT -->
+                    <div class="timeline-item left scroll-item">
+                        <div class="timeline-dot"><i data-lucide="graduation-cap"></i></div>
+                        <div class="timeline-card glass-card">
+                            <div class="timeline-header">
+                                <span class="timeline-duration">2024 - Present</span>
+                                <h4 class="institute-title">Maulana Abul Kalam Azad University of Technology</h4>
+                            </div>
+                            <h5 class="degree-title">B.Tech Degree in Information Technology</h5>
+                            <p class="timeline-desc">Deep engineering studies covering OOP, computer architecture, databases, system engineering, and web development fundamentals.</p>
+                            <span class="grade-badge">CGPA: 9.68</span>
+                        </div>
+                    </div>
+
+                    <!-- Item 3: STS Computer Education -->
+                    <div class="timeline-item right scroll-item">
+                        <div class="timeline-dot"><i data-lucide="graduation-cap"></i></div>
+                        <div class="timeline-card glass-card">
+                            <div class="timeline-header">
+                                <span class="timeline-duration">2022 - 2023</span>
+                                <h4 class="institute-title">STS Computer Education</h4>
+                            </div>
+                            <h5 class="degree-title">Diploma in Computer Applications</h5>
+                            <p class="timeline-desc">Foundational training in operations, database entries, programming constructs, and application configuration management.</p>
+                            <span class="grade-badge">Grade: 84%</span>
+                        </div>
+                    </div>
+
+                    <!-- Item 4: Diksha International School -->
+                    <div class="timeline-item left scroll-item">
+                        <div class="timeline-dot"><i data-lucide="school"></i></div>
+                        <div class="timeline-card glass-card">
+                            <div class="timeline-header">
+                                <span class="timeline-duration">2022 - 2024</span>
+                                <h4 class="institute-title">Diksha International School</h4>
+                            </div>
+                            <h5 class="degree-title">Class XII Science Stream (CBSE)</h5>
+                            <p class="timeline-desc">Primary focus on Physics, Chemistry, Mathematics, and Computer Science foundations.</p>
+                            <span class="grade-badge">Grade: 85.8%</span>
+                        </div>
+                    </div>
+
+                    <!-- Item 5: Bethel Mission School -->
+                    <div class="timeline-item right scroll-item">
+                        <div class="timeline-dot"><i data-lucide="school"></i></div>
+                        <div class="timeline-card glass-card">
+                            <div class="timeline-header">
+                                <span class="timeline-duration">2009 - 2022</span>
+                                <h4 class="institute-title">Bethel Mission School</h4>
+                            </div>
+                            <h5 class="degree-title">Class X General Curriculum (CBSE)</h5>
+                            <p class="timeline-desc">Comprehensive early education focusing on core sciences, mathematics, and communicative English.</p>
+                            <span class="grade-badge">Grade: 96.4%</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="certifications-section scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tagline">Validation of Expertise</span>
+                    <h3 class="section-title">Certifications</h3>
+                    <div class="title-underline"></div>
+                </div>
+
+                <div class="certifications-grid">
+                    
+                    <!-- Cert 1 -->
+                    <div class="cert-card glass-card scroll-item" data-cert-id="ecwoc26">
+                        <div class="cert-icon-wrapper"><i data-lucide="award" class="cert-trophy"></i></div>
+                        <div class="cert-details">
+                            <span class="cert-date">March 2026</span>
+                            <h4>Elite Coders Winter of Code '26</h4>
+                            <p class="cert-issuer">Elite Coders Organization</p>
+                        </div>
+                        <button class="cert-btn-verify">
+                            <span>View Credentials</span>
+                            <i data-lucide="eye"></i>
+                        </button>
+                    </div>
+
+                    <!-- Cert 2 -->
+                    <div class="cert-card glass-card scroll-item" data-cert-id="iitm25">
+                        <div class="cert-icon-wrapper"><i data-lucide="award" class="cert-trophy"></i></div>
+                        <div class="cert-details">
+                            <span class="cert-date">Dec 2025</span>
+                            <h4>Programming & Data Science</h4>
+                            <p class="cert-issuer">IIT Madras Academic Senate</p>
+                        </div>
+                        <button class="cert-btn-verify">
+                            <span>View Credentials</span>
+                            <i data-lucide="eye"></i>
+                        </button>
+                    </div>
+
+                    <!-- Cert 3 -->
+                    <div class="cert-card glass-card scroll-item" data-cert-id="fcc25">
+                        <div class="cert-icon-wrapper"><i data-lucide="award" class="cert-trophy"></i></div>
+                        <div class="cert-details">
+                            <span class="cert-date">Feb 2025</span>
+                            <h4>Responsive Web Design</h4>
+                            <p class="cert-issuer">freeCodeCamp Developer Curriculum</p>
+                        </div>
+                        <button class="cert-btn-verify">
+                            <span>View Credentials</span>
+                            <i data-lucide="eye"></i>
+                        </button>
+                    </div>
+
+                    <!-- Cert 4 -->
+                    <div class="cert-card glass-card scroll-item" data-cert-id="postman25">
+                        <div class="cert-icon-wrapper"><i data-lucide="award" class="cert-trophy"></i></div>
+                        <div class="cert-details">
+                            <span class="cert-date">March 2025</span>
+                            <h4>Postman API Fundamentals</h4>
+                            <p class="cert-issuer">Postman Academy</p>
+                        </div>
+                        <button class="cert-btn-verify">
+                            <span>View Credentials</span>
+                            <i data-lucide="eye"></i>
+                        </button>
+                    </div>
+
+                    <!-- Cert 5 -->
+                    <div class="cert-card glass-card scroll-item" data-cert-id="cisco25">
+                        <div class="cert-icon-wrapper"><i data-lucide="award" class="cert-trophy"></i></div>
+                        <div class="cert-details">
+                            <span class="cert-date">Oct 2025</span>
+                            <h4>Data Analytics Essentials</h4>
+                            <p class="cert-issuer">Cisco Networking Academy</p>
+                        </div>
+                        <button class="cert-btn-verify">
+                            <span>View Credentials</span>
+                            <i data-lucide="eye"></i>
+                        </button>
+                    </div>
+
+                    <!-- Cert 6 -->
+                    <div class="cert-card glass-card scroll-item" data-cert-id="google24">
+                        <div class="cert-icon-wrapper"><i data-lucide="award" class="cert-trophy"></i></div>
+                        <div class="cert-details">
+                            <span class="cert-date">Nov 2024</span>
+                            <h4>Technical Support Fundamentals</h4>
+                            <p class="cert-issuer">Google Career Certificates</p>
+                        </div>
+                        <button class="cert-btn-verify">
+                            <span>View Credentials</span>
+                            <i data-lucide="eye"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section id="achievements" class="achievements-section scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tagline">Triumphs & Metrics</span>
+                    <h3 class="section-title">Achievements</h3>
+                    <div class="title-underline"></div>
+                </div>
+
+                <div class="achievements-grid">
+                    <!-- Achievement 1 -->
+                    <div class="achievement-card glass-card scroll-item">
+                        <div class="trophy-glow"><i data-lucide="trophy"></i></div>
+                        <div class="achievement-details">
+                            <div class="rank-badge">Ranked 14<sup>th</sup></div>
+                            <h4>Elite Coders Winter of Code '26</h4>
+                            <p>Stood in the top tier nationally in ECWOC '26, demonstrating rapid algorithmic solution engineering under high-pressure parameters.</p>
+                        </div>
+                    </div>
+
+                    <!-- Achievement 2 -->
+                    <div class="achievement-card glass-card scroll-item">
+                        <div class="trophy-glow"><i data-lucide="sparkles"></i></div>
+                        <div class="achievement-details">
+                            <div class="rank-badge">Ranked 4<sup>th</sup></div>
+                            <h4>GFG Hackfest, Kolkata</h4>
+                            <p>Finished 4th in the competitive regional hackathon held in Kolkata, resolving high-efficiency data querying challenges within 24 hours.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section scroll-reveal">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tagline">Start a Conversation</span>
+                    <h3 class="section-title">Contact Me</h3>
+                    <div class="title-underline"></div>
+                </div>
+
+                <div class="contact-grid">
+                    <!-- Contact Info Column -->
+                    <div class="contact-info-col">
+                        <h4>Let's Collaborate!</h4>
+                        <p>Whether you're looking to build machine learning backends, responsive analytical frontends, or consult on a data science project, feel free to drop a line.</p>
+                        
+                        <div class="contact-details-list">
+                            <div class="contact-details-item">
+                                <div class="icon-box"><i data-lucide="mail"></i></div>
+                                <div class="item-text">
+                                    <span>Send an Email</span>
+                                    <a href="mailto:sheetalbajaj2025@gmail.com">sheetalbajaj2025@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="contact-details-item">
+                                <div class="icon-box"><i data-lucide="phone"></i></div>
+                                <div class="item-text">
+                                    <span>Call / WhatsApp</span>
+                                    <a href="tel:+918252128606">+91 8252128606</a>
+                                </div>
+                            </div>
+                            <div class="contact-details-item">
+                                <div class="icon-box"><i data-lucide="map-pin"></i></div>
+                                <div class="item-text">
+                                    <span>Current Location</span>
+                                    <strong>Kolkata, West Bengal, India</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="contact-socials-large">
+                            <h5>Follow my updates:</h5>
+                            <div class="social-large-buttons">
+                                <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-large-btn"><i data-lucide="linkedin"></i> <span>LinkedIn</span></a>
+                                <a href="https://github.com" target="_blank" rel="noopener" class="social-large-btn"><i data-lucide="github"></i> <span>GitHub</span></a>
+                                <a href="https://kaggle.com" target="_blank" rel="noopener" class="social-large-btn"><i data-lucide="database"></i> <span>Kaggle</span></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form Card -->
+                    <div class="contact-form-card glass-card">
+                        <form id="portfolio-contact-form" novalidate>
+                            <div class="form-row-two">
+                                <div class="form-group">
+                                    <label for="form-name">Your Name</label>
+                                    <div class="input-wrapper">
+                                        <i data-lucide="user"></i>
+                                        <input type="text" id="form-name" placeholder="John Doe" required>
+                                    </div>
+                                    <span class="error-msg" id="name-error">Please enter your name</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="form-email">Your Email</label>
+                                    <div class="input-wrapper">
+                                        <i data-lucide="mail"></i>
+                                        <input type="email" id="form-email" placeholder="john@example.com" required>
+                                    </div>
+                                    <span class="error-msg" id="email-error">Please enter a valid email</span>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="form-subject">Subject</label>
+                                <div class="input-wrapper">
+                                    <i data-lucide="tag"></i>
+                                    <input type="text" id="form-subject" placeholder="Project Inquiry / Hiring" required>
+                                </div>
+                                <span class="error-msg" id="subject-error">Please enter a subject</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="form-message">Message</label>
+                                <div class="input-wrapper text-area-wrapper">
+                                    <i data-lucide="message-square"></i>
+                                    <textarea id="form-message" rows="5" placeholder="Hi Sheetal, I'd like to talk about..." required></textarea>
+                                </div>
+                                <span class="error-msg" id="message-error">Please write a message</span>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-block" id="form-submit-btn">
+                                <span>Send Secure Message</span>
+                                <i data-lucide="send"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Hidden Inbox Dashboard (Easter Egg) -->
+        <section id="inbox-dashboard-section" class="inbox-section hidden">
+            <div class="container glass-card">
+                <div class="dashboard-header">
+                    <div class="header-left">
+                        <i data-lucide="inbox" class="inbox-glow"></i>
+                        <h3>Secure Inbox Dashboard (Admin View)</h3>
+                    </div>
+                    <button class="btn btn-secondary" id="close-inbox-btn">Close Dashboard</button>
+                </div>
+                <div class="inbox-table-wrapper">
+                    <table class="inbox-table">
+                        <thead>
+                            <tr>
+                                <th>Timestamp</th>
+                                <th>Sender</th>
+                                <th>Email</th>
+                                <th>Subject</th>
+                                <th>Message</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inbox-messages-list">
+                            <!-- Dynamic messages read from localStorage -->
+                        </tbody>
+                    </table>
+                    <div class="empty-inbox-msg" id="empty-inbox-notice">
+                        <i data-lucide="folder-open"></i>
+                        <p>No messages received yet. Submit a message in the contact form above to test!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Interactive Bottom Coding Terminal ("Sheetal's Shell v1.0") -->
+    <section class="terminal-widget collapsed" id="terminal-widget">
+        <div class="terminal-header" id="terminal-header-drag">
+            <div class="terminal-title">
+                <i data-lucide="terminal"></i>
+                <span>sheetalbajaj@shell:~ (v1.0)</span>
+            </div>
+            <div class="terminal-controls">
+                <button class="terminal-btn-ctrl min-btn" id="terminal-minimize" title="Minimize"><i data-lucide="minus"></i></button>
+                <button class="terminal-btn-ctrl max-btn" id="terminal-maximize" title="Maximize"><i data-lucide="maximize-2"></i></button>
+                <button class="terminal-btn-ctrl close-btn" id="terminal-close" title="Close"><i data-lucide="x"></i></button>
+            </div>
+        </div>
+        <div class="terminal-body">
+            <div class="terminal-history" id="terminal-history-screen">
+                <p class="terminal-line system-line">Sheetal Bajaj Interactive Command Line Shell v1.0.0 (API v2.6)</p>
+                <p class="terminal-line system-line">Type <span class="term-highlight">help</span> for a list of available portfolio command shortcuts.</p>
+                <br>
+            </div>
+            <div class="terminal-input-row">
+                <span class="terminal-prompt">guest@sheetal-pc:~$</span>
+                <input type="text" id="terminal-cli-input" autofocus autocomplete="off" aria-label="Terminal input line">
+            </div>
+        </div>
+    </section>
+
+    <!-- Digital Certificate Viewer Modal -->
+    <div class="modal" id="certificate-modal">
+        <div class="modal-backdrop" id="modal-backdrop-el"></div>
+        <div class="modal-content glass-card">
+            <button class="modal-close-btn" id="close-modal" aria-label="Close modal"><i data-lucide="x"></i></button>
+            <div class="modal-body" id="modal-certificate-view">
+                <!-- Dynamic SVG/HTML Certificate Generated in script.js -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="modal-print-btn"><i data-lucide="printer"></i> Print / Save PDF</button>
+                <button class="btn btn-primary" id="modal-share-btn"><i data-lucide="share-2"></i> Share Credentials</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Footer -->
+    <footer id="main-footer">
+        <div class="container footer-container">
+            <p>&copy; 2026 Sheetal Bajaj. All Rights Reserved. Crafted with passion & interactive analytics.</p>
+            <div class="footer-bottom-actions">
+                <a href="#hero" class="back-to-top" aria-label="Scroll to top of the page">
+                    <span>Back to Top</span>
+                    <i data-lucide="arrow-up"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script file -->
+    <script src="script.js"></script>
+</body>
+</html>
