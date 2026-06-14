@@ -1279,6 +1279,33 @@ section {
     cursor: pointer;
     position: relative;
     overflow: hidden;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-8px) rotate(-1.5deg);
+}
+.project-card:nth-child(odd):hover {
+    transform: translateY(-8px) rotate(-1.5deg);
+}
+
+.project-card:nth-child(even):hover {
+    transform: translateY(-8px) rotate(1.5deg);
+}
+.project-card {
+    transition: transform 0.4s ease;
+    transform-style: preserve-3d;
+}
+
+.project-card:hover {
+    transform:
+        perspective(1000px)
+        rotateX(4deg)
+        rotateY(-4deg)
+        translateY(-10px);
 }
 
 .project-card:after {
