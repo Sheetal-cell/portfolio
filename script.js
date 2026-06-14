@@ -42,28 +42,28 @@ const USER_CONFIG = {
     },
     certificates: {
         ecwoc26: {
-            fileLink: "certificates/ecwoc26.pdf", // Place your original certificate file in a 'certificates' folder and link here
-            verifyLink: "https://elitecoders.org/verify/ECWOC-2026-94821" // Replace with original verification link
+            fileLink: "certificates/ecwoc2026.jpg", // Place your original certificate file in a 'certificates' folder and link here
+             // Replace with original verification link
         },
         iitm25: {
-            fileLink: "certificates/iitm25.pdf",
-            verifyLink: "https://verify.iitm.ac.in/IITM-DS-774012"
+            fileLink: "certificates/iitm-foundation.jpg",
+           
         },
         fcc25: {
             fileLink: "certificates/fcc25.pdf",
-            verifyLink: "https://freecodecamp.org/certification/sheetal/fcc-rwd-9921"
+            
         },
         postman25: {
             fileLink: "certificates/postman25.pdf",
-            verifyLink: "https://api.badgr.io/public/assertions/POSTMAN-SE-883"
+            
         },
         cisco25: {
-            fileLink: "certificates/cisco25.pdf",
-            verifyLink: "https://www.credly.com/verify/CISCO-DA-4410"
+            fileLink: "certificates/cisco25.jpg",
+           
         },
         google24: {
             fileLink: "certificates/google24.pdf",
-            verifyLink: "https://coursera.org/verify/GOOGLE-TS-32104"
+            
         }
     }
 };
