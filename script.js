@@ -990,9 +990,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.stopPropagation();
             const certId = btn.closest('.cert-card').getAttribute('data-cert-id');
             const data = certData[certId];
-            if (data) {
-                openCertificate(data, certId);
-            }
+            
         });
     });
 
@@ -1003,6 +1001,20 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+
+    document.querySelectorAll('.cert-btn-verify').forEach(btn => {
+    btn.addEventListener('click', function () {
+        const card = this.closest('.cert-card');
+        const certId = card.dataset.certId;
+
+        const cert = USER_CONFIG.certificates[certId];
+
+        if (cert && cert.fileLink) {
+            window.open(cert.fileLink, '_blank');
+        }
+    });
+});
 
     function openCertificate(data, certId) {
         certViewEl.innerHTML = `
