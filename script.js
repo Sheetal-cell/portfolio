@@ -1016,113 +1016,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-    function openCertificate(data, certId) {
-        certViewEl.innerHTML = `
-            <div class="certificate-preview-box">
-                <span class="cert-preview-badge">Digital Credential Statement</span>
-                <h4 class="cert-preview-title">${data.title}</h4>
-                <div class="cert-preview-recipient">
-                    This is proudly presented to
-                    <span>SHEETAL BAJAJ</span>
-                </div>
-                <p class="cert-preview-desc">
-                    ${data.desc} Under peer validation protocols, the recipient is verified to have fulfilled all practical skills, code modules, and examination benchmarks.
-                </p>
-                <div class="cert-preview-bottom">
-                    <div class="cert-preview-sig">
-                        <div class="sig-name">Digital Signatory</div>
-                        <span>${data.issuer}</span>
-                    </div>
-                    <div style="text-align:right;">
-                        <div style="font-size:0.65rem; color:var(--text-muted); font-family:var(--font-mono); margin-bottom:4px;">ID: ${data.id}</div>
-                        <div style="font-size:0.65rem; color:var(--text-muted); font-family:var(--font-mono); margin-bottom:6px;">Date: ${data.date}</div>
-                        <div class="cert-preview-sig" style="width:auto; border:none; padding-top:0;">
-                            <div class="sig-name" style="color:var(--accent); font-size:0.75rem;">VERIFIED STATUS</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
-        
-        // Update modal footer buttons dynamically based on user config
-        const modalFooter = document.querySelector('#certificate-modal .modal-footer');
-        if (modalFooter) {
-            const certConfig = USER_CONFIG.certificates[certId];
-            const fileLink = certConfig ? certConfig.fileLink : null;
-            const verifyLink = certConfig ? certConfig.verifyLink : null;
-
-            modalFooter.innerHTML = `
-                ${fileLink ? `<a href="${fileLink}" target="_blank" class="btn btn-secondary" style="font-size: 0.85rem; padding: 10px 18px;"><i data-lucide="file-text" style="width:16px;height:16px;"></i> View PDF</a>` : ''}
-                ${verifyLink ? `<a href="${verifyLink}" target="_blank" class="btn btn-primary" style="font-size: 0.85rem; padding: 10px 18px;"><i data-lucide="external-link" style="width:16px;height:16px;"></i> Verify Online</a>` : ''}
-                <button class="btn btn-secondary" id="modal-share-btn" style="font-size: 0.85rem; padding: 10px 18px;"><i data-lucide="copy" style="width:16px;height:16px;"></i> Copy ID</button>
-            `;
-            
-            // Re-initialize Lucide icons in the footer
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-            }
-
-            // Re-bind share button listener
-            const shareBtn = document.getElementById('modal-share-btn');
-            if (shareBtn) {
-                shareBtn.addEventListener('click', () => {
-                    navigator.clipboard.writeText(data.id);
-                    createToast('Credential Verification ID Copied!', 'copy');
-                });
-            }
-        }
-
-        certModal.classList.add('active');
-    }
-
-    // 13. Floating Interactive Coding Terminal ("Sheetal's Shell v1.0")
-    const terminal = document.getElementById('terminal-widget');
-    const termTriggerBtn = document.getElementById('terminal-trigger-btn');
-    const termMinimize = document.getElementById('terminal-minimize');
-    const termMaximize = document.getElementById('terminal-maximize');
-    const termClose = document.getElementById('terminal-close');
-    const termInput = document.getElementById('terminal-cli-input');
-    const termScreen = document.getElementById('terminal-history-screen');
-    const termHeader = document.getElementById('terminal-header-drag');
-
-    if (termTriggerBtn && terminal) {
-        termTriggerBtn.addEventListener('click', () => {
-            terminal.classList.toggle('collapsed');
-            if (!terminal.classList.contains('collapsed')) {
-                termInput.focus();
-            }
-        });
-
-        termMinimize.addEventListener('click', (e) => {
-            e.stopPropagation();
-            terminal.classList.add('collapsed');
-        });
-
-        termMaximize.addEventListener('click', (e) => {
-            e.stopPropagation();
-            terminal.classList.toggle('maximized');
-        });
-
-        termClose.addEventListener('click', (e) => {
-            e.stopPropagation();
-            terminal.classList.add('hidden');
-        });
-
-        termHeader.addEventListener('dblclick', () => {
-            terminal.classList.toggle('maximized');
-        });
-
-        // Command handler
-        termInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                const rawCmd = termInput.value.trim();
-                termInput.value = '';
-                if (rawCmd) {
-                    executeTerminalCommand(rawCmd);
-                }
-            }
-        });
-    }
+   
 
     function executeTerminalCommand(cmdText) {
         // Echo input
@@ -1578,4 +1472,9 @@ Message: "${msg.message}"
             canvas.remove();
         }, 2000);
     }
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    lucide.createIcons();
 });
