@@ -11,13 +11,12 @@ const USER_CONFIG = {
     profile: {
         name: "Sheetal Bajaj",
         email: "sheetalbajaj2025@gmail.com",
-        phone: "+91 8252128606",
         location: "Kolkata, West Bengal, India",
         avatar: "1.webp", // Place your profile picture here (e.g. "avatar.jpg" or "1.webp")
-        linkedin: "https://linkedin.com", // Replace with your original LinkedIn link
-        github: "https://github.com", // Replace with your original GitHub link
-        gfg: "https://www.geeksforgeeks.org", // Replace with your original GeeksforGeeks link
-        kaggle: "https://kaggle.com" // Replace with your original Kaggle link
+        linkedin: "https://www.linkedin.com/in/sheetal-bajaj-s06091009/", // Replace with your original LinkedIn link
+        github: "https://github.com/Sheetal-cell", // Replace with your original GitHub link
+        gfg: "https://www.geeksforgeeks.org/profile/sheetal_bajaj", // Replace with your original GeeksforGeeks link
+        kaggle: "https://www.kaggle.com/sheetalbajaj" // Replace with your original Kaggle link
     },
     projects: {
         vyomdarpan: {
