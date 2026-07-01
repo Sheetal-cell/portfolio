@@ -1551,24 +1551,26 @@ Message: "${msg.message}"
     function verifyPasscode(input) {
         if (isLockedOut()) return false;
 
-        const inputHash = sha256(input);
-        const savedHash = localStorage.getItem('admin_passcode_hash') || DEFAULT_PASSCODE_HASH;
+        const savedPasscode =
+            localStorage.getItem("admin_passcode") || "admin123";
 
-        if (inputHash === savedHash) {
-            localStorage.setItem('admin_failed_attempts', '0');
+        if (input === savedPasscode) {
+            localStorage.setItem("admin_failed_attempts", "0");
             failedAttempts = 0;
-            sessionStorage.setItem('admin_authenticated', 'true');
+            sessionStorage.setItem("admin_authenticated", "true");
             return true;
-        } else {
-            failedAttempts++;
-            localStorage.setItem('admin_failed_attempts', failedAttempts.toString());
-            if (failedAttempts >= 3) {
-                const blockTime = Date.now() + 30000; // 30s lockout
-                localStorage.setItem('admin_lockout_time', blockTime.toString());
-                lockoutTime = blockTime;
-            }
-            return false;
         }
+
+        failedAttempts++;
+        localStorage.setItem("admin_failed_attempts", failedAttempts);
+
+        if (failedAttempts >= 3) {
+            const blockTime = Date.now() + 30000;
+            localStorage.setItem("admin_lockout_time", blockTime);
+            lockoutTime = blockTime;
+        }
+
+        return false;
     }
 
     // Modal UI selectors
