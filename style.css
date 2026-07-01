@@ -3512,13 +3512,10 @@ body::before {
 
 .cert-card {
     position: relative !important;
-    overflow: visible !important;
+    
 }
 
-.cert-card::before,
-.cert-card::after {
-    pointer-events: none !important;
-}
+
 
 .cert-details,
 .cert-icon-wrapper {
