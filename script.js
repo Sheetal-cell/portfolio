@@ -2032,36 +2032,36 @@ Message: "${msg.message}"
     const confirmPassError = document.getElementById('confirm-passcode-error');
 
     if (changePasscodeForm) {
-        changePasscodeForm.addEventListener('submit', (e) => {
+        changePasscodeForm.addEventListener("submit", function(e) {
             e.preventDefault();
-            if (oldPassError) oldPassError.style.display = 'none';
-            if (newPassError) newPassError.style.display = 'none';
-            if (confirmPassError) confirmPassError.style.display = 'none';
 
-            const oldVal = oldPasscodeField.value;
-            const newVal = newPasscodeField.value;
-            const confirmVal = confirmPasscodeField.value;
+            const oldPass = document.getElementById("old-passcode").value;
+            const newPass = document.getElementById("new-passcode").value;
+            const confirmPass = document.getElementById("confirm-passcode").value;
 
-            const savedHash = localStorage.getItem('admin_passcode_hash') || DEFAULT_PASSCODE_HASH;
-            if (sha256(oldVal) !== savedHash) {
-                if (oldPassError) oldPassError.style.display = 'block';
-                return;
-            }
-            if (newVal.length < 6) {
-                if (newPassError) newPassError.style.display = 'block';
-                return;
-            }
-            if (newVal !== confirmVal) {
-                if (confirmPassError) confirmPassError.style.display = 'block';
+            const savedPass =
+                localStorage.getItem("admin_passcode") || "admin123";
+
+            if (oldPass !== savedPass) {
+                alert("Current password is incorrect.");
                 return;
             }
 
-            const newHash = sha256(newVal);
-            localStorage.setItem('admin_passcode_hash', newHash);
-            oldPasscodeField.value = '';
-            newPasscodeField.value = '';
-            confirmPasscodeField.value = '';
-            createToast('Security passcode updated!', 'save');
+            if (newPass.length < 6) {
+                alert("Password must be at least 6 characters.");
+                return;
+            }
+
+            if (newPass !== confirmPass) {
+                alert("Passwords do not match.");
+                return;
+            }
+
+            localStorage.setItem("admin_passcode", newPass);
+
+            alert("Password changed successfully!");
+
+            this.reset();
         });
     }
 
