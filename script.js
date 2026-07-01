@@ -61,6 +61,12 @@ const USER_CONFIG = {
             fileLink: "certificates/cisco25.jpg",
 
         },
+        ideathon: {
+            fileLink: "certificates/ideathon.jpg",
+        },
+        algoyudh: {
+            fileLink: "certificates/algoyudh.jpg",
+        },
         google24: {
             fileLink: "certificates/google24.pdf",
 
