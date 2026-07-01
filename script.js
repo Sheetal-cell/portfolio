@@ -7,6 +7,10 @@
 // CENTRAL USER CONFIGURATION
 // Edit these values to configure your portfolio links and certificate files instantly!
 // ==========================================
+
+emailjs.init({
+    publicKey: "oMGhYQLnS8nhT9s1q"
+});
 const USER_CONFIG = {
     profile: {
         name: "Sheetal Bajaj",
@@ -1225,6 +1229,12 @@ Message: "${msg.message}"
     }
 
     function writeLineToTerminal(text, className = '') {
+        const termScreen = document.getElementById("terminal-screen"); // replace with your actual terminal ID if different
+
+        if (!termScreen) {
+            return;
+        }
+
         const p = document.createElement('p');
         p.className = `terminal-line ${className}`;
         p.innerHTML = text;
@@ -1355,7 +1365,8 @@ Message: "${msg.message}"
             }
 
             if (isValid) {
-                // Save Message to localStorage
+
+
                 const newMessage = {
                     name: nameEl.value.trim(),
                     email: emailEl.value.trim(),
@@ -1364,19 +1375,53 @@ Message: "${msg.message}"
                     time: new Date().toLocaleString()
                 };
 
-                const existingMessages = JSON.parse(localStorage.getItem('portfolio_messages') || '[]');
+                    // Save to Local Storage (your admin dashboard)
+                const existingMessages = JSON.parse(
+                    localStorage.getItem("portfolio_messages") || "[]"
+                );
+
                 existingMessages.push(newMessage);
-                localStorage.setItem('portfolio_messages', JSON.stringify(existingMessages));
 
-                // Success Feedback
-                createConfettiBlast();
-                createToast('Message Sent Successfully!', 'send');
+                localStorage.setItem(
+                    "portfolio_messages",
+                    JSON.stringify(existingMessages)
+                );
 
-                // Clear Form
-                contactForm.reset();
+                // Disable button while sending
+                formSubmitBtn.disabled = true;
 
-                // Print command tip in terminal if terminal is open
-                writeLineToTerminal(`System: Message received from ${newMessage.name}. Type <span class="term-highlight">messages</span> to inspect.`, 'system-line');
+                emailjs.send(
+                    "sheetal_portfolio",
+                    "template_mcwvgdi",
+                    {
+                        name: newMessage.name,
+                        email: newMessage.email,
+                        subject: newMessage.subject,
+                        message: newMessage.message
+                    }
+                )
+                .then(() => {
+
+                    createConfettiBlast();
+                    createToast("Message Sent Successfully!", "send");
+
+                    contactForm.reset();
+
+                
+
+                })
+                .catch((error) => {
+
+                    console.error(error);
+
+                    createToast("Failed to send email.", "error");
+
+                })
+                .finally(() => {
+
+                    formSubmitBtn.disabled = false;
+
+                });
             }
         });
 

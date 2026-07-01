@@ -904,7 +904,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
                                     <label for="form-name">Your Name</label>
                                     <div class="input-wrapper">
                                         <i data-lucide="user"></i>
-                                        <input type="text" id="form-name" placeholder="John Doe" required>
+                                        <input type="text" id="form-name" name="name" placeholder="John Doe" required>
                                     </div>
                                     <span class="error-msg" id="name-error">Please enter your name</span>
                                 </div>
@@ -912,7 +912,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
                                     <label for="form-email">Your Email</label>
                                     <div class="input-wrapper">
                                         <i data-lucide="mail"></i>
-                                        <input type="email" id="form-email" placeholder="john@example.com" required>
+                                        <input type="email" id="form-email" name="email" placeholder="john@example.com" required>
                                     </div>
                                     <span class="error-msg" id="email-error">Please enter a valid email</span>
                                 </div>
@@ -922,7 +922,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
                                 <label for="form-subject">Subject</label>
                                 <div class="input-wrapper">
                                     <i data-lucide="tag"></i>
-                                    <input type="text" id="form-subject" placeholder="Project Inquiry / Hiring" required>
+                                    <input type="text" id="form-subject" name="subject" placeholder="Project Inquiry / Hiring" required>
                                 </div>
                                 <span class="error-msg" id="subject-error">Please enter a subject</span>
                             </div>
@@ -931,7 +931,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
                                 <label for="form-message">Message</label>
                                 <div class="input-wrapper text-area-wrapper">
                                     <i data-lucide="message-square"></i>
-                                    <textarea id="form-message" rows="5" placeholder="Hi Sheetal, I'd like to talk about..." required></textarea>
+                                    <textarea id="form-message" name="message" rows="5" placeholder="Hi Sheetal, I'd like to talk about..." required></textarea>
                                 </div>
                                 <span class="error-msg" id="message-error">Please write a message</span>
                             </div>
@@ -1174,6 +1174,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     </footer>
 
     <!-- Script file -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
