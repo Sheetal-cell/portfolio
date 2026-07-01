@@ -43,27 +43,27 @@ const USER_CONFIG = {
     certificates: {
         ecwoc26: {
             fileLink: "certificates/ecwoc2026.jpg", // Place your original certificate file in a 'certificates' folder and link here
-             // Replace with original verification link
+            // Replace with original verification link
         },
         iitm25: {
             fileLink: "certificates/iitm-foundation.jpg",
-           
+
         },
         fcc25: {
             fileLink: "certificates/fcc25.pdf",
-            
+
         },
         postman25: {
             fileLink: "certificates/postman25.pdf",
-            
+
         },
         cisco25: {
             fileLink: "certificates/cisco25.jpg",
-           
+
         },
         google24: {
             fileLink: "certificates/google24.pdf",
-            
+
         }
     }
 };
@@ -80,19 +80,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (avatarEl && USER_CONFIG.profile.avatar) {
             avatarEl.src = USER_CONFIG.profile.avatar;
         }
-        
+
         const linkedinLinks = document.querySelectorAll('a[href*="linkedin.com"]');
         linkedinLinks.forEach(a => a.href = USER_CONFIG.profile.linkedin);
-        
+
         const githubLinks = document.querySelectorAll('a[href*="github.com"]');
         githubLinks.forEach(a => a.href = USER_CONFIG.profile.github);
-        
+
         const gfgLinks = document.querySelectorAll('a[href*="geeksforgeeks.org"]');
         gfgLinks.forEach(a => a.href = USER_CONFIG.profile.gfg);
-        
+
         const kaggleLinks = document.querySelectorAll('a[href*="kaggle.com"]');
         kaggleLinks.forEach(a => a.href = USER_CONFIG.profile.kaggle);
-        
+
         const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
         emailLinks.forEach(a => {
             a.href = `mailto:${USER_CONFIG.profile.email}`;
@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    
+
     // Particle background network inside Hero Section
     function initHeroParticles() {
         const canvas = document.getElementById('hero-particles');
@@ -190,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
+
             ctx.strokeStyle = `rgba(${getComputedStyle(document.documentElement).getPropertyValue('--accent-rgb') || '0, 242, 254'}, 0.08)`;
             ctx.lineWidth = 1;
             for (let i = 0; i < particles.length; i++) {
@@ -389,7 +389,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 3. Custom Cursor Interaction
     const cursor = document.querySelector('.custom-cursor');
     const cursorDot = document.querySelector('.custom-cursor-dot');
-    
+
     if (cursor && cursorDot && window.innerWidth > 768) {
         cursor.style.display = 'block';
         cursorDot.style.display = 'block';
@@ -453,7 +453,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             setTimeout(type, typeSpeed);
         }
-        
+
         // Start typing
         setTimeout(type, 1000);
     }
@@ -536,7 +536,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.addEventListener('click', () => {
                 const themeName = btn.getAttribute('data-theme');
                 document.documentElement.setAttribute('data-theme', themeName);
-                
+
                 themeOptBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
 
@@ -545,7 +545,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (themeName === 'purple') hexColor = '#a855f7';
                 else if (themeName === 'emerald') hexColor = '#10b981';
                 else if (themeName === 'sunset') hexColor = '#f97316';
-                
+
                 createToast(`Theme Accent Changed to ${themeName.toUpperCase()}`, 'palette');
             });
         });
@@ -594,7 +594,7 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.classList.add('active');
 
             const category = btn.getAttribute('data-category');
-            
+
             skillCards.forEach(card => {
                 const cardCats = card.getAttribute('data-category').split(' ');
                 if (category === 'all' || cardCats.includes(category)) {
@@ -634,7 +634,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeDrawerBtn = document.getElementById('close-drawer');
     const closeDrawerAction = document.getElementById('drawer-close-action');
     const drawerLinkAction = document.getElementById('drawer-link-action');
-    
+
     const dTitle = document.getElementById('drawer-title');
     const dCategory = document.getElementById('drawer-category');
     const dTags = document.getElementById('drawer-tags-list');
@@ -664,7 +664,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dTitle.textContent = data.title;
         dCategory.textContent = data.category;
         dFullDesc.textContent = data.description;
-        
+
         // Tags
         dTags.innerHTML = '';
         data.tags.forEach(tag => {
@@ -697,7 +697,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderSimulator(simType) {
         dSimulator.innerHTML = '';
-        
+
         if (simType === 'sakshya') {
             dSimulator.innerHTML = `
                 <div style="display:flex; flex-direction:column; gap:10px;">
@@ -713,23 +713,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
             `;
-            
+
             setTimeout(() => {
                 const uploadBtn = document.getElementById('sim-upload-btn');
                 const simOutput = document.getElementById('sim-output');
-                
+
                 if (uploadBtn && simOutput) {
                     uploadBtn.addEventListener('click', () => {
                         uploadBtn.disabled = true;
                         uploadBtn.innerHTML = '<span>Processing Document NLP...</span>';
                         simOutput.innerHTML = 'Connecting to SAKSHYA Local Host...<br>[1] Extracting PDF Content...';
-                        
+
                         let steps = [
                             "[2] Querying embedding database (148 chunks matched)...",
                             "[3] Compiling legal risk variables...",
                             "[4] LLM Summary Complete!<br><br><strong>Analysis Result:</strong><br>- <strong>Judgment Status:</strong> APPEAL RECOMMENDATION HIGH<br>- <strong>Critical Compliance Directives:</strong> Section 143(a) compliance directive mandatory within 30 days.<br>- <strong>Identified Risks:</strong> 84% Liability exposure detected in Clause 9.2.<br>- <strong>Action Items:</strong> File motion of appeal, schedule executive briefing."
                         ];
-                        
+
                         let idx = 0;
                         function showStep() {
                             if (idx < steps.length) {
@@ -773,9 +773,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     qBtn.addEventListener('click', () => {
                         const val = qInput.value.trim().toLowerCase();
                         if (!val) return;
-                        
+
                         qOut.innerHTML = 'Parsing natural language...<br>Compiling SQLite Schema...';
-                        
+
                         setTimeout(() => {
                             qOut.innerHTML = `
                                 <div style="width:100%; text-align:left; color:#38bdf8; margin-bottom:8px;">
@@ -838,10 +838,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Formulas simulation
                     const offsetAngle = (90 - parseFloat(val)).toFixed(2);
                     const zenithOffset = (parseFloat(val) * 1.082).toFixed(3);
-                    
+
                     mathOut.innerHTML = `
                         <strong>Solar Zenith Angle at Solstice:</strong> ${offsetAngle}°<br>
-                        <strong>Calculated Gnomon Height Ratio:</strong> 1 : ${(Math.tan((offsetAngle * Math.PI)/180)).toFixed(4)}<br>
+                        <strong>Calculated Gnomon Height Ratio:</strong> 1 : ${(Math.tan((offsetAngle * Math.PI) / 180)).toFixed(4)}<br>
                         <strong>Yantra Structural Shift Factor:</strong> ${zenithOffset}mm offset<br>
                         <span style="color:#10b981; font-weight:bold; font-size:0.7rem; display:block; margin-top:4px;">[CALCULATION STABLE FOR PILING WORK]</span>
                     `;
@@ -897,7 +897,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <span style="color:#10b981; font-weight:bold; font-size:0.65rem; display:flex; align-items:center; gap:4px;"><span style="width:6px; height:6px; background:#10b981; border-radius:50%;"></span> ACTIVE</span>
                         `;
                         medList.appendChild(div);
-                        
+
                         medName.value = '';
                         createToast(`Scheduled medicine reminder: ${name}`, 'bell');
                     });
@@ -984,15 +984,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const certViewEl = document.getElementById('modal-certificate-view');
 
     const certButtons = document.querySelectorAll('.cert-btn-verify');
-    
+
     certButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
+        btn.addEventListener("click", function (e) {
+            e.preventDefault();
             e.stopPropagation();
-            const certId = btn.closest('.cert-card').getAttribute('data-cert-id');
-            const data = certData[certId];
-            
+
+            const card = this.closest(".cert-card");
+            if (!card) return;
+
+            const certId = card.dataset.certId;
+            const cert = USER_CONFIG.certificates[certId];
+
+            if (cert?.fileLink) {
+                window.location.href = cert.fileLink;
+            }
         });
     });
+    
+
+
+
+
 
     if (closeModalBtn && modalBackdrop) {
         [closeModalBtn, modalBackdrop].forEach(el => {
@@ -1003,20 +1016,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    document.querySelectorAll('.cert-btn-verify').forEach(btn => {
-    btn.addEventListener('click', function () {
-        const card = this.closest('.cert-card');
-        const certId = card.dataset.certId;
 
-        const cert = USER_CONFIG.certificates[certId];
 
-        if (cert && cert.fileLink) {
-            window.open(cert.fileLink, '_blank');
-        }
-    });
-});
 
-   
 
     function executeTerminalCommand(cmdText) {
         // Echo input
@@ -1036,10 +1038,13 @@ document.addEventListener('DOMContentLoaded', () => {
 - <span class="term-highlight">clear</span> : Clear history screens.
 - <span class="term-highlight">theme &lt;accent&gt;</span> : Switch theme accent (cyan, purple, emerald, sunset).
 - <span class="term-highlight">light / dark</span> : Switch screen theme mode.
-- <span class="term-highlight">messages</span> : Fetch received contact form submissions (Admin ONLY).
+- <span class="term-highlight">login &lt;passcode&gt;</span> : Authenticate admin session (default: admin123).
+- <span class="term-highlight">logout</span> : Terminate admin session.
+- <span class="term-highlight">messages</span> : Fetch inbox submissions (Admin session required).
+- <span class="term-highlight">analytics</span> : Display contact data metrics (Admin session required).
 - <span class="term-highlight">matrix</span> : Starts retro green digital cascade.`, 'system-line');
                 break;
-            
+
             case 'about':
                 writeLineToTerminal(`Sheetal Bajaj | AI & Data Science Developer
 B.Tech IT (MAKAUT) Dual Track & B.S. Data Science (IIT Madras) Student.
@@ -1103,7 +1108,82 @@ Contact: sheetalbajaj2025@gmail.com | +91 8252128606`, 'system-line');
                 writeLineToTerminal(`Dark Space Mode activated.`, 'system-line');
                 break;
 
+            case 'login':
+                if (!arg) {
+                    writeLineToTerminal(`Error: Passcode required. Usage: login &lt;passcode&gt;`, 'error-line');
+                    break;
+                }
+                if (isLockedOut()) {
+                    const timeLeft = Math.ceil((lockoutTime - Date.now()) / 1000);
+                    writeLineToTerminal(`Authentication locked. Try again in ${timeLeft}s.`, 'error-line');
+                    break;
+                }
+                if (verifyPasscode(arg)) {
+                    writeLineToTerminal(`AUTHENTICATION SUCCESSFUL. Admin CLI session established. Type <span class="term-highlight">messages</span> or <span class="term-highlight">analytics</span>.`, 'system-line');
+                    createToast('Logged in via CLI', 'unlock');
+                } else {
+                    writeLineToTerminal(`ACCESS DENIED. Invalid passcode.`, 'error-line');
+                    if (isLockedOut()) {
+                        writeLineToTerminal(`System Locked Out for 30s (3 failed attempts).`, 'error-line');
+                        startLockoutInterval();
+                    }
+                }
+                break;
+
+            case 'logout':
+                if (isAdminAuthenticated()) {
+                    sessionStorage.removeItem('admin_authenticated');
+                    if (inboxSection) inboxSection.classList.add('hidden');
+                    writeLineToTerminal(`Admin session terminated.`, 'system-line');
+                    createToast('Logged out via CLI', 'lock');
+                } else {
+                    writeLineToTerminal(`No active session to terminate.`, 'error-line');
+                }
+                break;
+
+            case 'analytics':
+            case 'stats':
+                if (!isAdminAuthenticated()) {
+                    writeLineToTerminal(`ACCESS REJECTED. Admin authentication required. Please type: login &lt;passcode&gt;`, 'error-line');
+                    break;
+                }
+                const statMsgs = JSON.parse(localStorage.getItem('portfolio_messages') || '[]');
+                let hiring = 0, collab = 0, general = 0;
+                statMsgs.forEach(msg => {
+                    const subj = (msg.subject || '').toLowerCase();
+                    if (subj.includes('hire') || subj.includes('job') || subj.includes('offer') || subj.includes('position') || subj.includes('work')) {
+                        hiring++;
+                    } else if (subj.includes('collab') || subj.includes('partner') || subj.includes('project') || subj.includes('build')) {
+                        collab++;
+                    } else {
+                        general++;
+                    }
+                });
+
+                const uniqueEmails = new Set(statMsgs.map(m => m.email)).size;
+                writeLineToTerminal(`========================================
+ADMIN INBOX ANALYTICS METRICS SUMMARY
+========================================
+Total Received Messages: ${statMsgs.length}
+Unique Contacts Count:   ${uniqueEmails}
+
+SUBJECT CATEGORIES BREAKDOWN:
+- Hiring/Job Proposals:  ${hiring}
+- Collaborations:       ${collab}
+- General Inquiries:    ${general}
+
+CLI METRIC CHARTS DISPLAY:
+Hiring:  [${'#'.repeat(Math.min(10, hiring))}${'-'.repeat(Math.max(0, 10 - hiring))}]
+Collab:  [${'#'.repeat(Math.min(10, collab))}${'-'.repeat(Math.max(0, 10 - collab))}]
+General: [${'#'.repeat(Math.min(10, general))}${'-'.repeat(Math.max(0, 10 - general))}]
+========================================`, 'system-line');
+                break;
+
             case 'messages':
+                if (!isAdminAuthenticated()) {
+                    writeLineToTerminal(`ACCESS REJECTED. Authentication required.<br>Please run: <span class="term-highlight">login &lt;passcode&gt;</span> to initialize admin access.`, 'error-line');
+                    break;
+                }
                 const msgList = JSON.parse(localStorage.getItem('portfolio_messages') || '[]');
                 if (msgList.length === 0) {
                     writeLineToTerminal(`No messages received yet. Submit the contact form first!`, 'system-line');
@@ -1120,6 +1200,7 @@ Message: "${msg.message}"
                     if (inboxSection) {
                         inboxSection.classList.remove('hidden');
                         renderInboxMessages();
+                        renderAdminAnalytics();
                         inboxSection.scrollIntoView({ behavior: 'smooth' });
                     }
                 }
@@ -1164,10 +1245,10 @@ Message: "${msg.message}"
 
         function step() {
             if (!document.getElementById('matrix-overlay')) return; // Exit if cleared
-            
+
             ctx.fillStyle = 'rgba(7, 9, 19, 0.05)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
+
             // Get current accent color in hex
             const theme = document.documentElement.getAttribute('data-theme') || 'cyan';
             let color = '#00f2fe';
@@ -1194,7 +1275,7 @@ Message: "${msg.message}"
         }
 
         requestAnimationFrame(step);
-        
+
         // Listen for next clear
         const orgClear = executeTerminalCommand;
         // Intercept to clean up matrix canvas
@@ -1204,7 +1285,7 @@ Message: "${msg.message}"
                 if (c) c.remove();
             }
         };
-        
+
         // Setup clean hook
         document.addEventListener('keydown', function cleanMatrix(e) {
             if (e.key === 'Enter') {
@@ -1225,7 +1306,7 @@ Message: "${msg.message}"
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            
+
             // Validations
             const nameEl = document.getElementById('form-name');
             const emailEl = document.getElementById('form-email');
@@ -1284,10 +1365,10 @@ Message: "${msg.message}"
                 // Success Feedback
                 createConfettiBlast();
                 createToast('Message Sent Successfully!', 'send');
-                
+
                 // Clear Form
                 contactForm.reset();
-                
+
                 // Print command tip in terminal if terminal is open
                 writeLineToTerminal(`System: Message received from ${newMessage.name}. Type <span class="term-highlight">messages</span> to inspect.`, 'system-line');
             }
@@ -1322,29 +1403,324 @@ Message: "${msg.message}"
         });
     }
 
-    function toggleInboxDashboard() {
-        if (inboxSection) {
-            inboxSection.classList.toggle('hidden');
-            if (!inboxSection.classList.contains('hidden')) {
-                renderInboxMessages();
-                inboxSection.scrollIntoView({ behavior: 'smooth' });
-                createToast('Admin Message Dashboard unlocked!', 'unlock');
+    // --- AUTHENTICATION & SECURITY STATE ---
+    const DEFAULT_PASSCODE_HASH = "b922a9675276e0388d1d86d63503cb358c213271d47155700832049d5bf1531e"; // SHA-256 for "admin123"
+    let failedAttempts = parseInt(localStorage.getItem('admin_failed_attempts') || '0');
+    let lockoutTime = parseInt(localStorage.getItem('admin_lockout_time') || '0');
+    let lockoutInterval = null;
+
+    // Standard pure JS SHA-256 implementation
+    function sha256(ascii) {
+        function rightRotate(value, amount) {
+            return (value >>> amount) | (value << (32 - amount));
+        }
+        var mathPow = Math.pow;
+        var maxWord = mathPow(2, 32);
+        var lengthProperty = 'length';
+        var i, j;
+        var result = '';
+        var words = [];
+        var asciiLength = ascii[lengthProperty];
+        var hash = sha256.h = sha256.h || [];
+        var k = sha256.k = sha256.k || [];
+        var primeCounter = k[lengthProperty];
+        var isComposite = {};
+        for (var candidate = 2; primeCounter < 64; candidate++) {
+            if (!isComposite[candidate]) {
+                for (i = 0; i < 313; i += candidate) {
+                    isComposite[i] = candidate;
+                }
+                hash[primeCounter] = (mathPow(candidate, .5) * maxWord) | 0;
+                k[primeCounter++] = (mathPow(candidate, 1 / 3) * maxWord) | 0;
             }
         }
+        ascii += '\x80';
+        while (ascii[lengthProperty] % 64 - 56) ascii += '\x00';
+        for (i = 0; i < ascii[lengthProperty]; i++) {
+            j = ascii.charCodeAt(i);
+            if (j >> 8) return;
+            words[i >> 2] |= j << ((3 - i % 4) * 8);
+        }
+        words[words[lengthProperty]] = ((asciiLength * 8) / maxWord) | 0;
+        words[words[lengthProperty]] = (asciiLength * 8) | 0;
+
+        var hashCopy = hash.slice(0);
+        for (j = 0; j < words[lengthProperty]; j += 16) {
+            var w = words.slice(j, j + 16);
+            var oldHash = hash.slice(0);
+            for (i = 0; i < 64; i++) {
+                var wItem = w[i];
+                if (i >= 16) {
+                    var s0 = rightRotate(w[i - 15], 7) ^ rightRotate(w[i - 15], 18) ^ (w[i - 15] >>> 3);
+                    var s1 = rightRotate(w[i - 2], 17) ^ rightRotate(w[i - 2], 19) ^ (w[i - 2] >>> 10);
+                    wItem = w[i] = (w[i - 16] + s0 + w[i - 7] + s1) | 0;
+                }
+                var ch = (hash[4] & hash[5]) ^ (~hash[4] & hash[6]);
+                var maj = (hash[0] & hash[1]) ^ (hash[0] & hash[2]) ^ (hash[1] & hash[2]);
+                var temp1 = (hash[7] + (rightRotate(hash[4], 6) ^ rightRotate(hash[4], 11) ^ rightRotate(hash[4], 25)) + ch + k[i] + wItem) | 0;
+                var temp2 = ((rightRotate(hash[0], 2) ^ rightRotate(hash[0], 13) ^ rightRotate(hash[0], 22)) + maj) | 0;
+                hash = [(temp1 + temp2) | 0].concat(hash);
+                hash[4] = (hash[4] + temp1) | 0;
+                hash.length = 8;
+            }
+            for (i = 0; i < 8; i++) {
+                hash[i] = (hash[i] + oldHash[i]) | 0;
+            }
+        }
+        for (i = 0; i < 8; i++) {
+            var val = hashCopy[i] = (hashCopy[i] + hash[i]) | 0;
+            if (val < 0) val += maxWord;
+            var hex = val.toString(16);
+            while (hex[lengthProperty] < 8) hex = '0' + hex;
+            result += hex;
+        }
+        return result;
+    }
+
+    function isLockedOut() {
+        if (lockoutTime > 0) {
+            const now = Date.now();
+            if (now < lockoutTime) {
+                return true;
+            } else {
+                localStorage.removeItem('admin_lockout_time');
+                localStorage.setItem('admin_failed_attempts', '0');
+                failedAttempts = 0;
+                lockoutTime = 0;
+                return false;
+            }
+        }
+        return false;
+    }
+
+    function isAdminAuthenticated() {
+        return sessionStorage.getItem('admin_authenticated') === 'true';
+    }
+
+    function verifyPasscode(input) {
+        if (isLockedOut()) return false;
+
+        const inputHash = sha256(input);
+        const savedHash = localStorage.getItem('admin_passcode_hash') || DEFAULT_PASSCODE_HASH;
+
+        if (inputHash === savedHash) {
+            localStorage.setItem('admin_failed_attempts', '0');
+            failedAttempts = 0;
+            sessionStorage.setItem('admin_authenticated', 'true');
+            return true;
+        } else {
+            failedAttempts++;
+            localStorage.setItem('admin_failed_attempts', failedAttempts.toString());
+            if (failedAttempts >= 3) {
+                const blockTime = Date.now() + 30000; // 30s lockout
+                localStorage.setItem('admin_lockout_time', blockTime.toString());
+                lockoutTime = blockTime;
+            }
+            return false;
+        }
+    }
+
+    // Modal UI selectors
+    const adminLoginModal = document.getElementById('admin-login-modal');
+    const adminLoginForm = document.getElementById('admin-login-form');
+    const adminPasscodeField = document.getElementById('admin-passcode');
+    const togglePassVisibility = document.getElementById('toggle-login-pass-visibility');
+    const eyeIconLogin = document.getElementById('eye-icon-login');
+    const loginErrorMsg = document.getElementById('login-error-msg');
+    const lockoutBanner = document.getElementById('lockout-banner');
+    const lockoutTimeLeft = document.getElementById('lockout-time-left');
+    const loginSubmitBtn = document.getElementById('login-submit-btn');
+    const closeLoginBtn = document.getElementById('close-login-modal');
+
+    // Show/hide passcode input
+    if (togglePassVisibility && adminPasscodeField) {
+        togglePassVisibility.addEventListener('click', () => {
+            if (adminPasscodeField.type === 'password') {
+                adminPasscodeField.type = 'text';
+                eyeIconLogin.setAttribute('data-lucide', 'eye-off');
+            } else {
+                adminPasscodeField.type = 'password';
+                eyeIconLogin.setAttribute('data-lucide', 'eye');
+            }
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        });
+    }
+
+    function updateLockoutUI() {
+        if (isLockedOut()) {
+            const timeLeft = Math.ceil((lockoutTime - Date.now()) / 1000);
+            if (timeLeft > 0) {
+                if (lockoutBanner) lockoutBanner.style.display = 'flex';
+                if (lockoutTimeLeft) lockoutTimeLeft.textContent = `Locked out. Retry in ${timeLeft}s`;
+                if (adminPasscodeField) adminPasscodeField.disabled = true;
+                if (loginSubmitBtn) loginSubmitBtn.disabled = true;
+                if (loginErrorMsg) loginErrorMsg.style.display = 'none';
+                return;
+            }
+        }
+        if (lockoutBanner) lockoutBanner.style.display = 'none';
+        if (adminPasscodeField) adminPasscodeField.disabled = false;
+        if (loginSubmitBtn) loginSubmitBtn.disabled = false;
+        if (lockoutInterval) {
+            clearInterval(lockoutInterval);
+            lockoutInterval = null;
+        }
+    }
+
+    function startLockoutInterval() {
+        if (lockoutInterval) clearInterval(lockoutInterval);
+        updateLockoutUI();
+        if (isLockedOut()) {
+            lockoutInterval = setInterval(updateLockoutUI, 1000);
+        }
+    }
+
+    // Run lockout initialization check
+    startLockoutInterval();
+
+    if (adminLoginForm) {
+        adminLoginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const input = adminPasscodeField.value;
+            if (verifyPasscode(input)) {
+                if (adminLoginModal) adminLoginModal.classList.remove('active');
+                adminPasscodeField.value = '';
+                if (loginErrorMsg) loginErrorMsg.style.display = 'none';
+
+                if (inboxSection) {
+                    inboxSection.classList.remove('hidden');
+                    renderInboxMessages();
+                    renderAdminAnalytics();
+                    inboxSection.scrollIntoView({ behavior: 'smooth' });
+                }
+                createToast('Authentication successful!', 'unlock');
+            } else {
+                const card = adminLoginModal.querySelector('.modal-content');
+                if (card) {
+                    card.classList.add('shake');
+                    setTimeout(() => card.classList.remove('shake'), 400);
+                }
+                if (loginErrorMsg) loginErrorMsg.style.display = 'block';
+                if (isLockedOut()) {
+                    startLockoutInterval();
+                }
+            }
+        });
+    }
+
+    if (closeLoginBtn) {
+        closeLoginBtn.addEventListener('click', () => {
+            if (adminLoginModal) adminLoginModal.classList.remove('active');
+        });
+    }
+
+    // Toggle Admin Dashboard
+    function toggleInboxDashboard() {
+        if (isAdminAuthenticated()) {
+            if (inboxSection) {
+                inboxSection.classList.toggle('hidden');
+                if (!inboxSection.classList.contains('hidden')) {
+                    renderInboxMessages();
+                    renderAdminAnalytics();
+                    inboxSection.scrollIntoView({ behavior: 'smooth' });
+                    createToast('Admin Message Dashboard unlocked!', 'unlock');
+                }
+            }
+        } else {
+            if (adminLoginModal) {
+                adminLoginModal.classList.add('active');
+                if (loginErrorMsg) loginErrorMsg.style.display = 'none';
+                startLockoutInterval();
+            }
+        }
+    }
+
+    // --- TAB SWITCHING SYSTEM ---
+    const tabBtns = document.querySelectorAll('.dashboard-tab-btn');
+    const tabContents = document.querySelectorAll('.dashboard-tab-content');
+
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const targetTab = btn.getAttribute('data-tab');
+
+            tabBtns.forEach(b => b.classList.remove('active'));
+            tabContents.forEach(c => c.classList.remove('active'));
+
+            btn.classList.add('active');
+            const targetContent = document.getElementById(targetTab);
+            if (targetContent) {
+                targetContent.classList.add('active');
+            }
+
+            // Render specific components on tab focus
+            if (targetTab === 'tab-analytics') {
+                renderAdminAnalytics();
+            } else if (targetTab === 'tab-logs') {
+                renderInboxMessages();
+            }
+        });
+    });
+
+    // --- MESSAGES LOG LOGIC (WITH SEARCH/FILTERS/EXPORTS) ---
+    const searchInput = document.getElementById('log-search-input');
+    const categoryFilter = document.getElementById('log-category-filter');
+    const adminLogoutBtn = document.getElementById('admin-logout-btn');
+
+    if (searchInput) {
+        searchInput.addEventListener('input', renderInboxMessages);
+    }
+    if (categoryFilter) {
+        categoryFilter.addEventListener('change', renderInboxMessages);
+    }
+    if (adminLogoutBtn) {
+        adminLogoutBtn.addEventListener('click', () => {
+            sessionStorage.removeItem('admin_authenticated');
+            if (inboxSection) inboxSection.classList.add('hidden');
+            createToast('Logged out successfully.', 'lock');
+        });
     }
 
     function renderInboxMessages() {
         const listEl = document.getElementById('inbox-messages-list');
         const noticeEl = document.getElementById('empty-inbox-notice');
-        
+
         if (!listEl) return;
-        
-        const messages = JSON.parse(localStorage.getItem('portfolio_messages') || '[]');
-        
+
+        let messages = JSON.parse(localStorage.getItem('portfolio_messages') || '[]');
+
+        // Category filtering
+        const filterVal = categoryFilter ? categoryFilter.value : 'all';
+        if (filterVal !== 'all') {
+            messages = messages.filter(msg => {
+                const subj = (msg.subject || '').toLowerCase();
+                const isHiring = subj.includes('hire') || subj.includes('job') || subj.includes('offer') || subj.includes('position') || subj.includes('work');
+                const isCollab = subj.includes('collab') || subj.includes('partner') || subj.includes('project') || subj.includes('build');
+
+                if (filterVal === 'hiring') return isHiring;
+                if (filterVal === 'collaboration') return isCollab;
+                if (filterVal === 'general') return !isHiring && !isCollab;
+                return true;
+            });
+        }
+
+        // Search filtering
+        const searchVal = searchInput ? searchInput.value.toLowerCase().trim() : '';
+        if (searchVal) {
+            messages = messages.filter(msg => {
+                return (msg.name || '').toLowerCase().includes(searchVal) ||
+                    (msg.email || '').toLowerCase().includes(searchVal) ||
+                    (msg.subject || '').toLowerCase().includes(searchVal) ||
+                    (msg.message || '').toLowerCase().includes(searchVal);
+            });
+        }
+
         listEl.innerHTML = '';
-        
+
         if (messages.length === 0) {
-            if (noticeEl) noticeEl.style.display = 'flex';
+            if (noticeEl) {
+                noticeEl.style.display = 'flex';
+                noticeEl.querySelector('p').textContent = 'No messages matching filters found.';
+            }
             return;
         }
 
@@ -1367,24 +1743,277 @@ Message: "${msg.message}"
             listEl.appendChild(tr);
         });
 
-        lucide.createIcons();
+        if (typeof lucide !== 'undefined') lucide.createIcons();
 
-        // Delete handlers
+        // Delete handlers (mapped back to master logs array)
         const deleteButtons = listEl.querySelectorAll('.inbox-action-delete');
         deleteButtons.forEach(btn => {
             btn.addEventListener('click', () => {
-                const index = parseInt(btn.getAttribute('data-index'));
-                const msgs = JSON.parse(localStorage.getItem('portfolio_messages') || '[]');
-                msgs.splice(index, 1);
-                localStorage.setItem('portfolio_messages', JSON.stringify(msgs));
-                renderInboxMessages();
-                createToast('Message entry deleted.', 'trash-2');
+                const idx = parseInt(btn.getAttribute('data-index'));
+                const masterMsgs = JSON.parse(localStorage.getItem('portfolio_messages') || '[]');
+                const targetMsg = messages[idx];
+
+                const masterIdx = masterMsgs.findIndex(m =>
+                    m.time === targetMsg.time &&
+                    m.email === targetMsg.email &&
+                    m.message === targetMsg.message
+                );
+
+                if (masterIdx !== -1) {
+                    masterMsgs.splice(masterIdx, 1);
+                    localStorage.setItem('portfolio_messages', JSON.stringify(masterMsgs));
+                    renderInboxMessages();
+                    renderAdminAnalytics();
+                    createToast('Message entry deleted.', 'trash-2');
+                }
             });
         });
     }
 
+    // --- DATA SCIENCE ANALYTICS CHART GENERATION ---
+    function renderAdminAnalytics() {
+        const totalEl = document.getElementById('kpi-total-messages');
+        const uniqueEl = document.getElementById('kpi-unique-senders');
+        const topCatEl = document.getElementById('kpi-top-category');
+        const catContainer = document.getElementById('category-chart-container');
+        const domContainer = document.getElementById('domain-chart-container');
+
+        const messages = JSON.parse(localStorage.getItem('portfolio_messages') || '[]');
+
+        // Metrics calculation
+        if (totalEl) totalEl.textContent = messages.length;
+
+        const uniqueEmails = new Set(messages.map(m => (m.email || '').toLowerCase().trim()));
+        if (uniqueEl) uniqueEl.textContent = uniqueEmails.size;
+
+        let hiringCount = 0, collabCount = 0, generalCount = 0;
+        messages.forEach(msg => {
+            const subj = (msg.subject || '').toLowerCase();
+            if (subj.includes('hire') || subj.includes('job') || subj.includes('offer') || subj.includes('position') || subj.includes('work')) {
+                hiringCount++;
+            } else if (subj.includes('collab') || subj.includes('partner') || subj.includes('project') || subj.includes('build')) {
+                collabCount++;
+            } else {
+                generalCount++;
+            }
+        });
+
+        let topCat = 'N/A';
+        if (messages.length > 0) {
+            const maxVal = Math.max(hiringCount, collabCount, generalCount);
+            if (maxVal === hiringCount) topCat = 'Hiring';
+            else if (maxVal === collabCount) topCat = 'Collaboration';
+            else topCat = 'General';
+        }
+        if (topCatEl) topCatEl.textContent = topCat;
+
+        // Subject categories vertical bar chart
+        if (catContainer) {
+            if (messages.length === 0) {
+                catContainer.innerHTML = `<span style="font-size:0.8rem; color:var(--text-muted);">No message data available</span>`;
+            } else {
+                const categories = [
+                    { name: 'Hiring', count: hiringCount },
+                    { name: 'Collaboration', count: collabCount },
+                    { name: 'General', count: generalCount }
+                ];
+                const maxCount = Math.max(...categories.map(c => c.count)) || 1;
+                const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent') || '#00f2fe';
+
+                let svgHtml = `<svg viewBox="0 0 400 180" style="width:100%; height:100%;">`;
+                categories.forEach((cat, idx) => {
+                    const y = 30 + idx * 50;
+                    const percentWidth = (cat.count / maxCount) * 220;
+
+                    svgHtml += `
+                        <text x="10" y="${y + 15}" fill="var(--text-secondary)" font-size="12" font-weight="500">${cat.name}</text>
+                        <rect x="110" y="${y}" width="220" height="20" rx="4" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.05)" stroke-width="1" />
+                        <rect x="110" y="${y}" width="${percentWidth}" height="20" rx="4" fill="${accentColor}" />
+                        <text x="${120 + percentWidth}" y="${y + 14}" fill="var(--text-primary)" font-size="11" font-weight="bold">${cat.count}</text>
+                    `;
+                });
+                svgHtml += `</svg>`;
+                catContainer.innerHTML = svgHtml;
+            }
+        }
+
+        // Email domains donut chart
+        if (domContainer) {
+            if (messages.length === 0) {
+                domContainer.innerHTML = `<span style="font-size:0.8rem; color:var(--text-muted);">No message data available</span>`;
+            } else {
+                const domains = {};
+                messages.forEach(msg => {
+                    const email = msg.email || '';
+                    const parts = email.split('@');
+                    if (parts.length > 1) {
+                        const domain = parts[1].toLowerCase().trim();
+                        domains[domain] = (domains[domain] || 0) + 1;
+                    }
+                });
+
+                const domainList = Object.entries(domains).map(([domain, count]) => ({ domain, count }));
+                domainList.sort((a, b) => b.count - a.count);
+
+                const chartData = [];
+                let otherCount = 0;
+                domainList.forEach((d, idx) => {
+                    if (idx < 3) chartData.push(d);
+                    else otherCount += d.count;
+                });
+                if (otherCount > 0) chartData.push({ domain: 'others', count: otherCount });
+
+                const totalCount = messages.length;
+                const colors = ['var(--accent)', '#a855f7', '#10b981', '#fbbf24'];
+
+                let svgHtml = `<svg viewBox="0 0 320 200" style="width:100%; height:100%;">`;
+                const cx = 100, cy = 100, r = 50, strokeWidth = 14;
+                const circ = 2 * Math.PI * r;
+                let currentOffset = 0;
+
+                chartData.forEach((d, idx) => {
+                    const percent = d.count / totalCount;
+                    const strokeDasharray = `${percent * circ} ${circ}`;
+                    const strokeDashoffset = -currentOffset;
+                    const strokeColor = colors[idx % colors.length];
+
+                    svgHtml += `
+                        <circle cx="${cx}" cy="${cy}" r="${r}" 
+                            fill="transparent" 
+                            stroke="${strokeColor}" 
+                            stroke-width="${strokeWidth}" 
+                            stroke-dasharray="${strokeDasharray}" 
+                            stroke-dashoffset="${strokeDashoffset}"
+                            transform="rotate(-90 ${cx} ${cy})" />
+                    `;
+                    currentOffset += percent * circ;
+
+                    const legendY = 40 + idx * 30;
+                    svgHtml += `
+                        <circle cx="190" cy="${legendY - 4}" r="5" fill="${strokeColor}" />
+                        <text x="205" y="${legendY}" fill="var(--text-secondary)" font-size="11">${d.domain}</text>
+                        <text x="280" y="${legendY}" fill="var(--text-muted)" font-size="11" font-weight="bold">${d.count}</text>
+                    `;
+                });
+
+                svgHtml += `
+                    <text x="${cx}" y="${cy + 4}" fill="var(--text-primary)" font-size="12" font-weight="bold" text-anchor="middle">${totalCount}</text>
+                    <text x="${cx}" y="${cy + 15}" fill="var(--text-muted)" font-size="8" text-anchor="middle">messages</text>
+                </svg>`;
+                domContainer.innerHTML = svgHtml;
+            }
+        }
+    }
+
+    // --- DATA EXPORT ACTIONS & DB RESET ---
+    const exportCsvBtn = document.getElementById('export-csv-btn');
+    const exportJsonBtn = document.getElementById('export-json-btn');
+    const clearDbBtn = document.getElementById('clear-all-messages-btn');
+
+    if (exportCsvBtn) {
+        exportCsvBtn.addEventListener('click', () => {
+            const messages = JSON.parse(localStorage.getItem('portfolio_messages') || '[]');
+            if (messages.length === 0) {
+                createToast('No message records to export.', 'info');
+                return;
+            }
+            let csvContent = "data:text/csv;charset=utf-8,";
+            csvContent += "Timestamp,Sender,Email,Subject,Message\n";
+            messages.forEach(msg => {
+                const row = [
+                    `"${(msg.time || '').replace(/"/g, '""')}"`,
+                    `"${(msg.name || '').replace(/"/g, '""')}"`,
+                    `"${(msg.email || '').replace(/"/g, '""')}"`,
+                    `"${(msg.subject || '').replace(/"/g, '""')}"`,
+                    `"${(msg.message || '').replace(/"/g, '""')}"`
+                ].join(",");
+                csvContent += row + "\n";
+            });
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `portfolio_messages_${Date.now()}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            createToast('Messages exported to CSV.', 'download');
+        });
+    }
+
+    if (exportJsonBtn) {
+        exportJsonBtn.addEventListener('click', () => {
+            const messages = JSON.parse(localStorage.getItem('portfolio_messages') || '[]');
+            if (messages.length === 0) {
+                createToast('No message records to export.', 'info');
+                return;
+            }
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(messages, null, 2));
+            const link = document.createElement("a");
+            link.setAttribute("href", dataStr);
+            link.setAttribute("download", `portfolio_messages_${Date.now()}.json`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            createToast('Messages exported to JSON.', 'download');
+        });
+    }
+
+    if (clearDbBtn) {
+        clearDbBtn.addEventListener('click', () => {
+            if (confirm('Verify: Clear ALL database message records permanently?')) {
+                localStorage.setItem('portfolio_messages', '[]');
+                renderInboxMessages();
+                renderAdminAnalytics();
+                createToast('Database cleared.', 'trash-2');
+            }
+        });
+    }
+
+    // --- SECURITY PASSCODE CONFIGURATION ---
+    const changePasscodeForm = document.getElementById('change-passcode-form');
+    const oldPasscodeField = document.getElementById('old-passcode');
+    const newPasscodeField = document.getElementById('new-passcode');
+    const confirmPasscodeField = document.getElementById('confirm-passcode');
+    const oldPassError = document.getElementById('old-passcode-error');
+    const newPassError = document.getElementById('new-passcode-error');
+    const confirmPassError = document.getElementById('confirm-passcode-error');
+
+    if (changePasscodeForm) {
+        changePasscodeForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (oldPassError) oldPassError.style.display = 'none';
+            if (newPassError) newPassError.style.display = 'none';
+            if (confirmPassError) confirmPassError.style.display = 'none';
+
+            const oldVal = oldPasscodeField.value;
+            const newVal = newPasscodeField.value;
+            const confirmVal = confirmPasscodeField.value;
+
+            const savedHash = localStorage.getItem('admin_passcode_hash') || DEFAULT_PASSCODE_HASH;
+            if (sha256(oldVal) !== savedHash) {
+                if (oldPassError) oldPassError.style.display = 'block';
+                return;
+            }
+            if (newVal.length < 6) {
+                if (newPassError) newPassError.style.display = 'block';
+                return;
+            }
+            if (newVal !== confirmVal) {
+                if (confirmPassError) confirmPassError.style.display = 'block';
+                return;
+            }
+
+            const newHash = sha256(newVal);
+            localStorage.setItem('admin_passcode_hash', newHash);
+            oldPasscodeField.value = '';
+            newPasscodeField.value = '';
+            confirmPasscodeField.value = '';
+            createToast('Security passcode updated!', 'save');
+        });
+    }
+
     function escapeHTML(str) {
-        return str.replace(/[&<>'"]/g, 
+        return str.replace(/[&<>'"]/g,
             tag => ({
                 '&': '&amp;',
                 '<': '&lt;',
@@ -1407,7 +2036,7 @@ Message: "${msg.message}"
             <span class="toast-msg">${msg}</span>
         `;
         container.appendChild(toast);
-        
+
         if (typeof lucide !== 'undefined') {
             lucide.createIcons();
         }
@@ -1416,7 +2045,7 @@ Message: "${msg.message}"
             toast.style.animation = 'none'; // Clear animation
             toast.style.opacity = '1';
             toast.style.transform = 'translateX(0)';
-            
+
             // Fade out
             setTimeout(() => {
                 toast.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
@@ -1439,7 +2068,7 @@ Message: "${msg.message}"
             const particle = document.createElement('div');
             const size = Math.random() * 8 + 5;
             const color = colors[Math.floor(Math.random() * colors.length)];
-            
+
             particle.style.cssText = `
                 position: absolute;
                 width: ${size}px;
@@ -1452,7 +2081,7 @@ Message: "${msg.message}"
                 transform: translate(-50%, 0) rotate(0deg);
                 transition: transform 1.5s cubic-bezier(0.1, 0.8, 0.3, 1), opacity 1.5s ease-out;
             `;
-            
+
             canvas.appendChild(particle);
 
             // Trigger blast coordinates

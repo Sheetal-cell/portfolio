@@ -686,6 +686,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
             </div>
         </section>
 
+
         <!-- Certifications Section -->
         <section id="certifications" class="certifications-section scroll-reveal">
             <div class="container">
@@ -706,11 +707,11 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
                             <p class="cert-issuer">Elite Coders Organization</p>
                         </div>
                         <a href="certificates/ecwoc2026.jpg"
-   target="_blank"
-   class="cert-btn-verify">
-    <span>View Credentials</span>
-    <i data-lucide="eye"></i>
-</a>
+                                target="_blank"
+                                class="cert-btn-verify">
+                                <span>View Credentials</span>
+                                <i data-lucide="eye"></i>
+                        </a>
                     </div>
 
                     <!-- Cert 2 -->
@@ -921,27 +922,149 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
                         <i data-lucide="inbox" class="inbox-glow"></i>
                         <h3>Secure Inbox Dashboard (Admin View)</h3>
                     </div>
-                    <button class="btn btn-secondary" id="close-inbox-btn">Close Dashboard</button>
+                    <div class="header-right-actions" style="display:flex; gap:10px; align-items:center;">
+                        <button class="btn btn-secondary btn-small" id="admin-logout-btn" style="padding:6px 12px; font-size:0.8rem;"><i data-lucide="log-out" style="width:14px; height:14px; margin-right:4px;"></i> Logout</button>
+                        <button class="btn btn-secondary" id="close-inbox-btn">Close Panel</button>
+                    </div>
                 </div>
-                <div class="inbox-table-wrapper">
-                    <table class="inbox-table">
-                        <thead>
-                            <tr>
-                                <th>Timestamp</th>
-                                <th>Sender</th>
-                                <th>Email</th>
-                                <th>Subject</th>
-                                <th>Message</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody id="inbox-messages-list">
-                            <!-- Dynamic messages read from localStorage -->
-                        </tbody>
-                    </table>
-                    <div class="empty-inbox-msg" id="empty-inbox-notice">
-                        <i data-lucide="folder-open"></i>
-                        <p>No messages received yet. Submit a message in the contact form above to test!</p>
+
+                <!-- Dashboard Tab Triggers -->
+                <div class="dashboard-tabs">
+                    <button class="dashboard-tab-btn active" data-tab="tab-analytics">
+                        <i data-lucide="bar-chart-2"></i> <span>Analytics Overview</span>
+                    </button>
+                    <button class="dashboard-tab-btn" data-tab="tab-logs">
+                        <i data-lucide="mail"></i> <span>Message Log</span>
+                    </button>
+                    <button class="dashboard-tab-btn" data-tab="tab-security">
+                        <i data-lucide="shield"></i> <span>Security Settings</span>
+                    </button>
+                </div>
+
+                <!-- Tab Contents -->
+                <!-- Analytics Tab -->
+                <div class="dashboard-tab-content active" id="tab-analytics">
+                    <div class="kpi-grid">
+                        <div class="kpi-card">
+                            <span class="kpi-title">Total Messages</span>
+                            <span class="kpi-value" id="kpi-total-messages">0</span>
+                        </div>
+                        <div class="kpi-card">
+                            <span class="kpi-title">Unique Senders</span>
+                            <span class="kpi-value" id="kpi-unique-senders">0</span>
+                        </div>
+                        <div class="kpi-card">
+                            <span class="kpi-title">Primary Subject</span>
+                            <span class="kpi-value" id="kpi-top-category">N/A</span>
+                        </div>
+                    </div>
+                    
+                    <div class="charts-grid">
+                        <div class="chart-card-wrapper glass-card">
+                            <h5>Subject Distribution</h5>
+                            <div class="svg-chart-container" id="category-chart-container">
+                                <!-- Dynamic SVG chart will be drawn here -->
+                            </div>
+                        </div>
+                        <div class="chart-card-wrapper glass-card">
+                            <h5>Email Domain Ratios</h5>
+                            <div class="svg-chart-container" id="domain-chart-container">
+                                <!-- Dynamic SVG chart will be drawn here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Logs Tab -->
+                <div class="dashboard-tab-content" id="tab-logs">
+                    <!-- Advanced Filters & Actions -->
+                    <div class="logs-filter-bar">
+                        <div class="search-input-group">
+                            <i data-lucide="search"></i>
+                            <input type="text" id="log-search-input" placeholder="Search sender, email, message...">
+                        </div>
+                        <div class="filter-select-group">
+                            <i data-lucide="filter"></i>
+                            <select id="log-category-filter">
+                                <option value="all">All Subjects</option>
+                                <option value="hiring">Hiring / Opportunity</option>
+                                <option value="collaboration">Collaboration</option>
+                                <option value="general">General Inquiry</option>
+                            </select>
+                        </div>
+                        <div class="export-actions">
+                            <button class="btn btn-secondary btn-small" id="export-csv-btn" title="Export to CSV">
+                                <i data-lucide="download"></i> <span>Export CSV</span>
+                            </button>
+                            <button class="btn btn-secondary btn-small" id="export-json-btn" title="Export to JSON">
+                                <i data-lucide="download"></i> <span>Export JSON</span>
+                            </button>
+                            <button class="btn btn-danger btn-small" id="clear-all-messages-btn" title="Clear all messages">
+                                <i data-lucide="trash-2"></i> <span>Clear Database</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="inbox-table-wrapper">
+                        <table class="inbox-table">
+                            <thead>
+                                <tr>
+                                    <th>Timestamp</th>
+                                    <th>Sender</th>
+                                    <th>Email</th>
+                                    <th>Subject</th>
+                                    <th>Message</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="inbox-messages-list">
+                                <!-- Dynamic messages read from localStorage -->
+                            </tbody>
+                        </table>
+                        <div class="empty-inbox-msg" id="empty-inbox-notice">
+                            <i data-lucide="folder-open"></i>
+                            <p>No messages received yet. Submit a message in the contact form above to test!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Security Tab -->
+                <div class="dashboard-tab-content" id="tab-security">
+                    <div class="security-settings-wrapper">
+                        <h5>Change Admin Passcode</h5>
+                        <p class="settings-desc">To secure your messages, update the passcode hash. Default is <code>admin123</code>.</p>
+                        <form id="change-passcode-form">
+                            <div class="form-group" style="margin-bottom:15px;">
+                                <label for="old-passcode">Current Passcode</label>
+                                <div class="input-wrapper">
+                                    <i data-lucide="lock"></i>
+                                    <input type="password" id="old-passcode" placeholder="Enter current passcode" required>
+                                </div>
+                                <span class="error-msg" id="old-passcode-error">Incorrect current passcode</span>
+                            </div>
+                            <div class="form-row-two" style="display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-bottom:15px;">
+                                <div class="form-group">
+                                    <label for="new-passcode">New Passcode</label>
+                                    <div class="input-wrapper">
+                                        <i data-lucide="key-round"></i>
+                                        <input type="password" id="new-passcode" placeholder="Min 6 characters" required>
+                                    </div>
+                                    <span class="error-msg" id="new-passcode-error">Passcode must be at least 6 characters</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirm-passcode">Confirm New Passcode</label>
+                                    <div class="input-wrapper">
+                                        <i data-lucide="key-round"></i>
+                                        <input type="password" id="confirm-passcode" placeholder="Repeat new passcode" required>
+                                    </div>
+                                    <span class="error-msg" id="confirm-passcode-error">Passcodes do not match</span>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="change-passcode-submit-btn">
+                                <span>Save New Passcode</span>
+                                <i data-lucide="save"></i>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -963,6 +1086,41 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
             <div class="modal-footer">
                 <button class="btn btn-secondary" id="modal-print-btn"><i data-lucide="printer"></i> Print / Save PDF</button>
                 <button class="btn btn-primary" id="modal-share-btn"><i data-lucide="share-2"></i> Share Credentials</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Authentication Modal -->
+    <div class="modal" id="admin-login-modal">
+        <div class="modal-backdrop" id="login-backdrop-el"></div>
+        <div class="modal-content glass-card auth-modal-card">
+            <button class="modal-close-btn" id="close-login-modal" aria-label="Close login"><i data-lucide="x"></i></button>
+            <div class="modal-header">
+                <i data-lucide="shield-alert" class="auth-icon-glow"></i>
+                <h3 style="margin-top:10px;">Admin Authentication</h3>
+                <p style="color:var(--text-secondary); font-size:0.85rem; margin-top:4px;">Access requires secure passcode validation.</p>
+            </div>
+            <div class="modal-body" style="margin-top:20px;">
+                <form id="admin-login-form">
+                    <div class="form-group" style="margin-bottom:20px; position:relative;">
+                        <label for="admin-passcode">Security Passcode</label>
+                        <div class="input-wrapper" style="position:relative;">
+                            <i data-lucide="key-round"></i>
+                            <input type="password" id="admin-passcode" placeholder="Enter Admin Passcode" required style="width:100%; padding-right:45px;">
+                            <button type="button" id="toggle-login-pass-visibility" class="pass-toggle-btn" title="Toggle Visibility" style="position:absolute; right:12px; top:50%; transform:translateY(-50%); background:transparent; border:none; color:var(--text-muted); cursor:pointer;">
+                                <i data-lucide="eye" id="eye-icon-login" style="width:18px; height:18px;"></i>
+                            </button>
+                        </div>
+                        <span class="error-msg" id="login-error-msg" style="color:#ef4444; font-size:0.75rem; margin-top:5px; display:none;">Incorrect passcode. Try again.</span>
+                        <div class="lockout-timer" id="lockout-banner" style="display:none; align-items:center; gap:6px; color:#ef4444; font-size:0.8rem; margin-top:10px; background:rgba(239,68,68,0.1); padding:8px 12px; border-radius:6px; border:1px solid rgba(239,68,68,0.2);">
+                            <i data-lucide="clock" style="width:14px; height:14px;"></i> <span id="lockout-time-left">Locked out for 30s</span>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block" id="login-submit-btn" style="width:100%; display:flex; justify-content:center; align-items:center; gap:8px;">
+                        <span>Authenticate</span>
+                        <i data-lucide="unlock" style="width:16px; height:16px;"></i>
+                    </button>
+                </form>
             </div>
         </div>
     </div>
