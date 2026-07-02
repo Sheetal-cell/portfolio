@@ -1059,7 +1059,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 writeLineToTerminal(`Sheetal Bajaj | AI & Data Science Developer
 B.Tech IT (MAKAUT) Dual Track & B.S. Data Science (IIT Madras) Student.
 Current Location: Kolkata, West Bengal, India.
-Contact: sheetalbajaj2025@gmail.com | +91 8252128606`, 'system-line');
+Contact: sheetalbajaj2025@gmail.com`,'system-line');
                 break;
 
             case 'skills':
