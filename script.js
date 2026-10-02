@@ -23,6 +23,16 @@ const USER_CONFIG = {
         kaggle: "https://www.kaggle.com/sheetalbajaj" // Replace with your original Kaggle link
     },
     projects: {
+
+        documed: {
+        codeLink: "https://github.com/Sheetal-cell/DocuMed_RAG1",
+        
+    },
+
+    trailsync: {
+        codeLink: "https://github.com/Sheetal-cell/TrailSync",
+       
+    },
         vyomdarpan: {
             codeLink: "https://github.com/Sheetal-cell/SIH25156", // Replace with original VyomDarpan repository link
             demoLink: "https://vyomdarpan.vercel.app/"
@@ -118,15 +128,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         Object.entries(USER_CONFIG.projects).forEach(([projId, config]) => {
-            if (projectsData[projId]) {
-                projectsData[projId].link = config.demoLink;
-            }
-            const cardLink = document.querySelector(`.project-card[data-project-id="${projId}"] .proj-link-btn`);
-            if (cardLink && config.demoLink) {
-                cardLink.href = config.demoLink;
-                cardLink.target = "_blank";
-            }
-        });
+
+    if (projectsData[projId]) {
+        projectsData[projId].link =
+            config.demoLink || config.codeLink || "";
+    }
+
+    const cardLink = document.querySelector(
+        `.project-card[data-project-id="${projId}"] .proj-link-btn`
+    );
+
+    if (cardLink) {
+
+        const link =
+            config.demoLink || config.codeLink || "";
+
+        if (link) {
+            cardLink.href = link;
+            cardLink.target = "_blank";
+            cardLink.rel = "noopener noreferrer";
+            cardLink.style.display = "";
+        } else {
+            cardLink.removeAttribute("href");
+            cardLink.removeAttribute("target");
+            cardLink.removeAttribute("rel");
+            cardLink.style.display = "none";
+        }
+    }
+});
     }
 
     // Particle background network inside Hero Section
@@ -229,6 +258,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3D Card tilt effect on hover
     function initCardTilt() {
+        if (window.matchMedia("(hover: none), (pointer: coarse)").matches) {
+    return;
+}
         const tiltElements = document.querySelectorAll('.project-card, .achievement-card');
         tiltElements.forEach(el => {
             el.style.transformStyle = 'preserve-3d';
@@ -251,16 +283,80 @@ document.addEventListener('DOMContentLoaded', () => {
     // Dynamic highlights linkage
     function initConnectedHighlighting() {
         const skillProjectMap = {
-            python: ['sakshya', 'ekasruti', 'instantbi', 'vyomdarpan'],
-            cpp: [],
-            c: [],
-            datascience: ['vyomdarpan', 'sakshya'],
-            dataanalysis: ['instantbi'],
-            dbms: ['instantbi'],
-            webdev: ['sakshya', 'instantbi'],
-            apis: ['sakshya'],
-            dsa: []
-        };
+    python: [
+        "documed",
+        "sakshya",
+        "ekasruti",
+        "instantbi",
+        "trailsync"
+    ],
+
+    cpp: [],
+
+    c: [],
+
+    sql: [
+        "instantbi",
+        "trailsync"
+    ],
+
+    datascience: [
+        "documed",
+        "instantbi",
+        "sakshya",
+        "vit-research",
+        "transgan-research"
+    ],
+
+    dataanalysis: [
+        "instantbi"
+    ],
+
+    machinelearning: [
+        "documed",
+        "instantbi",
+        "sakshya",
+        "ekasruti",
+        "vit-research",
+        "transgan-research"
+    ],
+
+    datavisualization: [
+        "instantbi"
+    ],
+
+    nlp: [
+        "documed",
+        "sakshya",
+        "ekasruti",
+        "instantbi"
+    ],
+
+    transformers: [
+        "documed",
+        "vit-research",
+        "transgan-research"
+    ],
+
+    webdev: [
+        "trailsync",
+        "instantbi",
+        "sakshya",
+        "medimitra",
+        "ekasruti"
+    ],
+
+    apis: [
+        "trailsync",
+        "instantbi",
+        "sakshya",
+        "medimitra"
+    ],
+
+    dsa: [
+        "trailsync"
+    ]
+};
 
         const skillCardsList = document.querySelectorAll('.skill-card');
         skillCardsList.forEach(card => {
@@ -304,52 +400,167 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 2. Data Stores
     const projectsData = {
-        vyomdarpan: {
-            title: "VyomDarpan",
-            category: "Astronomical Calculation",
-            tags: ["Astronomy", "Math Modeling", "Python", "Algorithms"],
-            description: "VyomDarpan is a computational project designed to align primary structural elements of astronomical layouts (Yantras) based on local latitude coordinates. By automating complex trigonometry calculations, it calculates exact angular offsets and shadow ratios required for solar and stellar alignment.",
-            tech: ["Python", "Trigonometric Formulations", "Matplotlib", "Data Pipelines"],
-            link: "https://vyomdarpan.vercel.app/",
-            simulator: "vyomdarpan"
-        },
-        sakshya: {
-            title: "SAKSHYA",
-            category: "AI Legal Assistant",
-            tags: ["LLM Processing", "AI Security", "LegalTech", "Full Stack"],
-            description: "SAKSHYA is an intelligent legal analysis system designed for judicial officers and legal executives. It processes court judgment PDFs, extracting key directives, compliance requirements, timelines, risk percentages, and appeal advisories utilizing state-of-the-art Large Language Model embeddings.",
-            tech: ["Python", "LLM APIs", "PDF Parsing", "JavaScript", "HTML5/CSS3"],
-            link: "https://github.com",
-            simulator: "sakshya"
-        },
-        instantbi: {
-            title: "InstantBI",
-            category: "NLP Dashboard",
-            tags: ["Data Analytics", "SQL Engine", "Dashboard", "Natural Language"],
-            description: "InstantBI bridges the gap between raw data and decision makers. It allows users to upload any CSV or Excel file and write analytical questions in plain conversational English. The engine parses the query, converts it to highly-optimized SQL, queries the dataset, and renders beautiful interactive charts.",
-            tech: ["SQL (DBMS)", "Python", "Data Analysis", "Chart.js", "CSV Parser"],
-            link: "https://github.com",
-            simulator: "instantbi"
-        },
-        medimitra: {
-            title: "MediMitra",
-            category: "Mobile Health",
-            tags: ["react", "Firebase", "Push Alert", "UX Design"],
-            description: "MediMitra is a cross-platform mobile application built to enhance medical adherence. Integrating react and Firebase, it handles medication calendars, schedules, and sends real-time push alerts to patients for dosage compliance.",
-            tech: ["react (Dart)", "Firebase Firestore", "Cloud Messaging", "Local Notifications"],
-            link: "https://github.com",
-            simulator: "medimitra"
-        },
-        ekasruti: {
-            title: "EkaSruti",
-            category: "Speech Translation",
-            tags: ["Speech AI", "NLP Pipeline", "Multilingual", "Real-time"],
-            description: "EkaSruti translates spoken audio into live multilingual captions. It leverages custom audio capture pipelines and NLP models to align speech structures and present readable transcriptions dynamically across web portals.",
-            tech: ["Speech-to-Text APIs", "Node.js Backend", "WebSocket Streams", "NLP Translators"],
-            link: "https://github.com",
-            simulator: "ekasruti"
-        }
-    };
+
+    documed: {
+    title: "Medical QA RAG System",
+    category: "AI / Medical RAG",
+    tags: [
+        "RAG",
+        "ChromaDB",
+        "MiniLM",
+        "Knowledge Graph",
+        "QLoRA",
+        "Qwen2.5"
+    ],
+    description:
+        "A citation-grounded medical question-answering system using Retrieval-Augmented Generation. The system retrieves relevant medical document chunks using MiniLM embeddings and ChromaDB, connects information through a Knowledge Graph, and uses a QLoRA fine-tuned Qwen2.5-1.5B model to generate grounded answers with source and page citations.",
+    tech: [
+        "Python",
+        "RAG",
+        "ChromaDB",
+        "all-MiniLM-L6-v2",
+        "Knowledge Graph",
+        "QLoRA",
+        "Qwen2.5-1.5B",
+        "FastAPI"
+    ],
+    link: "https://github.com/Sheetal-cell/DocuMed_RAG1",
+    simulator: "documed"
+},
+
+    trailsync: {
+    title: "TrailSync",
+    category: "Full-Stack Web Application",
+    tags: [
+        "Full Stack",
+        "REST APIs",
+        "Authentication",
+        "Route Management",
+        "Trekking"
+    ],
+    description:
+        "A full-stack trekking management application for discovering trails, planning treks, managing bookings, tracking trek progress, and handling route information through an integrated web application.",
+    tech: [
+        "React",
+        "JavaScript / TypeScript",
+        "REST APIs",
+        "Authentication",
+        "Database",
+        "Route Management",
+        "Full-Stack Development"
+    ],
+    link: "https://github.com/Sheetal-cell/TrailSync",
+    simulator: "trailsync"
+},
+
+    sakshya: {
+        title: "SAKSHYA",
+        subtitle: "AI Legal Document Analysis Platform",
+        description:
+            "An AI-powered legal document analysis platform that processes court judgment PDFs and extracts directives, compliance requirements, appeal recommendations, and risk indicators.",
+        tags: [
+            "AI",
+            "NLP",
+            "Document Processing",
+            "REST APIs"
+        ],
+        link: "https://sakshya-frontend.vercel.app/",
+        simulator: "sakshya"
+    },
+
+    instantbi: {
+        title: "InstantBI",
+        subtitle: "AI Analytics Platform",
+        description:
+            "An AI analytics platform that converts natural-language questions into SQL queries, performs data preprocessing, and generates interactive dashboards through REST APIs.",
+        tags: [
+            "AI",
+            "SQL",
+            "Data Analytics",
+            "REST APIs"
+        ],
+        link: "https://instant-bi.vercel.app/",
+        simulator: "instantbi"
+    },
+
+    medimitra: {
+        title: "MediMitra",
+        subtitle: "Cross-Platform Medicine Reminder Application",
+        description:
+            "A cross-platform medicine reminder application with medication scheduling, dosage notifications, adherence tracking, and Firebase-based authentication and storage.",
+        tags: [
+            "Mobile App",
+            "Firebase",
+            "Notifications",
+            "Healthcare"
+        ],
+        link: "https://medi-mitra-two.vercel.app/",
+        simulator: "medimitra"
+    },
+
+    ekasruti: {
+        title: "EkaSruti",
+        subtitle: "AI Speech-to-Multilingual Captioning System",
+        description:
+            "An AI system that converts live speech into multilingual captions using speech recognition and NLP, designed to improve accessibility and real-time communication.",
+        tags: [
+            "Speech Recognition",
+            "NLP",
+            "AI",
+            "Accessibility"
+        ],
+        link: "https://ekasruti-bigbugs.vercel.app/",
+        simulator: "ekasruti"
+    },
+
+    "vit-research": {
+    title: "An Image is Worth 16×16 Words",
+    category: "Computer Vision Research",
+    tags: [
+        "Vision Transformer",
+        "ViT",
+        "Transformers",
+        "Deep Learning"
+    ],
+    description:
+        "A research implementation of the Vision Transformer architecture based on the paper 'An Image is Worth 16×16 Words'. The implementation represents an image as a sequence of patches and processes these patch tokens using Transformer encoder blocks and self-attention.",
+    tech: [
+        "Python",
+        "PyTorch",
+        "Vision Transformer",
+        "Self-Attention",
+        "Transformer Encoder",
+        "Image Patching",
+        "Deep Learning"
+    ],
+    link: "https://github.com/Sheetal-cell/TensorTonic-Solutions/tree/main/vit",
+    simulator: "vit-research"
+},
+    "transgan-research": {
+    title: "Transformer-based Generative Adversarial Networks",
+    category: "Generative AI Research",
+    tags: [
+        "TransGAN",
+        "GAN",
+        "Transformers",
+        "CIFAR-10",
+        "WGAN-GP"
+    ],
+    description:
+        "A TransGAN-style CIFAR-10 research implementation using Transformer-based Generator and Discriminator architectures instead of conventional convolutional GAN components. The implementation uses adversarial training with WGAN-GP.",
+    tech: [
+        "Python",
+        "PyTorch",
+        "Transformers",
+        "GAN",
+        "CIFAR-10",
+        "WGAN-GP",
+        "Self-Attention"
+    ],
+    link: "https://github.com/Sheetal-cell/CIFAR_10-implementation",
+    simulator: "transgan-research"
+},
+};
 
     const certData = {
         ecwoc26: {
@@ -864,6 +1075,715 @@ document.addEventListener('DOMContentLoaded', () => {
                     calculate(slider.value);
                 }
             }, 50);
+
+            } else if (simType === 'documed') {
+
+    dSimulator.innerHTML = `
+        <div style="display:flex; flex-direction:column; gap:10px;">
+
+            <div style="border-bottom:1px solid var(--border-color); padding-bottom:8px;
+                        display:flex; justify-content:space-between; align-items:center;">
+                <span>DocuMed RAG Pipeline</span>
+                <span style="color:#10b981; font-size:0.7rem; font-weight:bold;">
+                    RAG_ACTIVE
+                </span>
+            </div>
+
+            <div style="display:flex; gap:6px; flex-wrap:wrap;">
+
+                <input
+                    id="documed-question"
+                    type="text"
+                    placeholder="Ask a medical question..."
+                    value="What are common symptoms of hypertension?"
+                    style="flex:1; min-width:180px; background:rgba(0,0,0,0.3);
+                           border:1px solid var(--border-color); color:white;
+                           padding:8px 10px; border-radius:6px; font-size:0.8rem;"
+                >
+
+                <button
+                    id="documed-run"
+                    class="btn btn-secondary"
+                    style="padding:8px 12px; font-size:0.8rem; justify-content:center;">
+                    Run RAG
+                </button>
+
+            </div>
+
+            <div id="documed-pipeline"
+                 style="display:flex; flex-direction:column; gap:5px;
+                        background:rgba(0,0,0,0.45); padding:10px;
+                        border-radius:6px; font-size:0.72rem;">
+
+                <div style="color:#64748b;">
+                    Waiting for query...
+                </div>
+
+            </div>
+
+            <div id="documed-answer"
+                 style="display:none; background:rgba(0,0,0,0.6);
+                        padding:10px; border-radius:6px;
+                        font-size:0.75rem; line-height:1.5;">
+            </div>
+
+        </div>
+    `;
+
+    setTimeout(() => {
+
+        const runBtn = document.getElementById('documed-run');
+        const question = document.getElementById('documed-question');
+        const pipeline = document.getElementById('documed-pipeline');
+        const answer = document.getElementById('documed-answer');
+
+        if (!runBtn || !question || !pipeline || !answer) return;
+
+        runBtn.addEventListener('click', () => {
+
+            const q = question.value.trim();
+
+            if (!q) {
+                question.focus();
+                return;
+            }
+
+            runBtn.disabled = true;
+            runBtn.textContent = "Running...";
+
+            pipeline.innerHTML = `
+                <div style="color:#94a3b8;">[1] Processing user query...</div>
+            `;
+
+            answer.style.display = "none";
+
+            const steps = [
+                "[2] Generating query embedding with MiniLM...",
+                "[3] Searching ChromaDB vector store...",
+                "[4] Retrieving relevant medical document chunks...",
+                "[5] Connecting retrieved context with Knowledge Graph...",
+                "[6] Passing grounded context to Qwen2.5-1.5B...",
+                "[7] Generating citation-grounded response..."
+            ];
+
+            let index = 0;
+
+            const timer = setInterval(() => {
+
+                if (index < steps.length) {
+
+                    pipeline.innerHTML += `
+                        <div style="color:#10b981;">
+                            ${steps[index]}
+                        </div>
+                    `;
+
+                    index++;
+
+                } else {
+
+                    clearInterval(timer);
+
+                    pipeline.innerHTML += `
+                        <div style="color:var(--accent); font-weight:bold;">
+                            ✓ Retrieval + Generation completed
+                        </div>
+                    `;
+
+                    answer.style.display = "block";
+
+                    answer.innerHTML = `
+                        <div style="color:var(--accent); font-weight:bold; margin-bottom:5px;">
+                            Generated Answer
+                        </div>
+
+                        Hypertension may not cause noticeable symptoms in many
+                        people, which is why regular blood-pressure monitoring
+                        is important.
+
+                        <br><br>
+
+                        <span style="color:#10b981;">
+                            Source: Hypertension document · Page 2
+                        </span>
+
+                        <br>
+
+                        <span style="color:#64748b;">
+                            Retrieved chunks: 5 · Embedding: MiniLM ·
+                            Vector DB: ChromaDB
+                        </span>
+                    `;
+
+                    runBtn.disabled = false;
+                    runBtn.textContent = "Run RAG";
+                }
+
+            }, 650);
+        });
+
+    }, 50);
+
+    } else if (simType === 'trailsync') {
+
+    dSimulator.innerHTML = `
+        <div style="display:flex; flex-direction:column; gap:10px;">
+
+            <div style="border-bottom:1px solid var(--border-color);
+                        padding-bottom:8px; display:flex;
+                        justify-content:space-between; align-items:center;">
+                <span>TrailSync Trek Planner</span>
+
+                <span style="color:#10b981; font-size:0.7rem; font-weight:bold;">
+                    SYSTEM_READY
+                </span>
+            </div>
+
+            <div style="display:flex; gap:6px; flex-wrap:wrap;">
+
+                <select id="trail-select"
+                    style="flex:1; min-width:160px;
+                           background:rgba(0,0,0,0.3);
+                           border:1px solid var(--border-color);
+                           color:white; padding:8px;
+                           border-radius:6px; font-size:0.8rem;">
+
+                    <option value="sandakphu">
+                        Sandakphu Trek
+                    </option>
+
+                    <option value="kedarkantha">
+                        Kedarkantha Trek
+                    </option>
+
+                    <option value="hampta">
+                        Hampta Pass Trek
+                    </option>
+
+                </select>
+
+                <button id="trail-plan-btn"
+                    class="btn btn-secondary"
+                    style="padding:8px 12px; font-size:0.8rem;">
+                    Plan Trek
+                </button>
+
+            </div>
+
+            <div id="trail-output"
+                style="background:rgba(0,0,0,0.55);
+                       padding:10px; border-radius:6px;
+                       font-size:0.75rem; line-height:1.5;">
+
+                Select a trail and start planning.
+
+            </div>
+
+            <div id="trail-progress"
+                style="display:none;">
+
+                <div style="font-size:0.7rem; color:#94a3b8;
+                            margin-bottom:5px;">
+                    Trek Progress
+                </div>
+
+                <div style="height:8px; background:rgba(255,255,255,0.08);
+                            border-radius:10px; overflow:hidden;">
+
+                    <div id="trail-progress-bar"
+                        style="height:100%; width:0%;
+                               background:var(--accent);
+                               transition:width 0.5s;">
+                    </div>
+
+                </div>
+
+                <div id="trail-progress-text"
+                    style="font-size:0.7rem; margin-top:5px;
+                           color:#10b981;">
+                    0% completed
+                </div>
+
+            </div>
+
+        </div>
+    `;
+
+    setTimeout(() => {
+
+        const select = document.getElementById('trail-select');
+        const planBtn = document.getElementById('trail-plan-btn');
+        const output = document.getElementById('trail-output');
+        const progress = document.getElementById('trail-progress');
+        const progressBar = document.getElementById('trail-progress-bar');
+        const progressText = document.getElementById('trail-progress-text');
+
+        if (!select || !planBtn || !output) return;
+
+        planBtn.addEventListener('click', () => {
+
+            const trail = select.value;
+
+            const trailData = {
+
+                sandakphu: {
+                    name: "Sandakphu Trek",
+                    distance: "32 km",
+                    duration: "5 Days",
+                    difficulty: "Moderate"
+                },
+
+                kedarkantha: {
+                    name: "Kedarkantha Trek",
+                    distance: "20 km",
+                    duration: "4 Days",
+                    difficulty: "Moderate"
+                },
+
+                hampta: {
+                    name: "Hampta Pass Trek",
+                    distance: "35 km",
+                    duration: "5 Days",
+                    difficulty: "Moderate–Difficult"
+                }
+
+            };
+
+            const data = trailData[trail];
+
+            output.innerHTML = `
+                <div style="color:var(--accent); font-weight:bold;">
+                    ${data.name}
+                </div>
+
+                <div style="margin-top:6px;">
+                    Distance: ${data.distance}<br>
+                    Duration: ${data.duration}<br>
+                    Difficulty: ${data.difficulty}
+                </div>
+
+                <div style="margin-top:8px; color:#10b981;">
+                    ✓ Route loaded<br>
+                    ✓ Trek plan generated<br>
+                    ✓ Booking workflow ready
+                </div>
+
+                <button id="start-trek-btn"
+                    class="btn btn-secondary"
+                    style="margin-top:8px; padding:7px 10px;
+                           font-size:0.7rem;">
+                    Start Trek Simulation
+                </button>
+            `;
+
+            progress.style.display = "block";
+            progressBar.style.width = "0%";
+            progressText.textContent = "0% completed";
+
+            setTimeout(() => {
+
+                const startBtn = document.getElementById('start-trek-btn');
+
+                if (!startBtn) return;
+
+                startBtn.addEventListener('click', () => {
+
+                    startBtn.disabled = true;
+                    startBtn.textContent = "Trek in Progress...";
+
+                    let value = 0;
+
+                    const timer = setInterval(() => {
+
+                        value += 10;
+
+                        progressBar.style.width = value + "%";
+                        progressText.textContent =
+                            value + "% completed";
+
+                        if (value >= 100) {
+
+                            clearInterval(timer);
+
+                            startBtn.textContent =
+                                "Trek Completed ✓";
+
+                            output.innerHTML += `
+                                <div style="margin-top:8px;
+                                            color:#10b981;
+                                            font-weight:bold;">
+                                    ✓ Trail completed<br>
+                                    ✓ Progress synchronized<br>
+                                    ✓ Trek record updated
+                                </div>
+                            `;
+                        }
+
+                    }, 300);
+
+                });
+
+            }, 50);
+
+        });
+
+    }, 50);
+
+    } else if (simType === 'vit-research') {
+
+    dSimulator.innerHTML = `
+        <div style="display:flex; flex-direction:column; gap:10px;">
+
+            <div style="border-bottom:1px solid var(--border-color);
+                        padding-bottom:8px; display:flex;
+                        justify-content:space-between; align-items:center;">
+
+                <span>Vision Transformer Pipeline</span>
+
+                <span style="color:#10b981; font-size:0.7rem;">
+                    TRANSFORMER_READY
+                </span>
+
+            </div>
+
+            <button id="vit-run-btn"
+                class="btn btn-secondary"
+                style="padding:8px 12px; font-size:0.8rem;">
+                Run ViT Simulation
+            </button>
+
+            <div id="vit-visual"
+                style="display:grid;
+                       grid-template-columns:repeat(4,1fr);
+                       gap:4px; padding:8px;
+                       background:rgba(0,0,0,0.5);
+                       border-radius:6px;">
+            </div>
+
+            <div id="vit-output"
+                style="background:rgba(0,0,0,0.55);
+                       padding:10px; border-radius:6px;
+                       font-size:0.72rem; line-height:1.5;">
+
+                Waiting to tokenize image...
+
+            </div>
+
+        </div>
+    `;
+
+    setTimeout(() => {
+
+        const runBtn = document.getElementById('vit-run-btn');
+        const visual = document.getElementById('vit-visual');
+        const output = document.getElementById('vit-output');
+
+        if (!runBtn || !visual || !output) return;
+
+        runBtn.addEventListener('click', () => {
+
+            runBtn.disabled = true;
+            runBtn.textContent = "Processing...";
+
+            visual.innerHTML = "";
+
+            // Simulated image patches
+            for (let i = 0; i < 16; i++) {
+
+                const patch = document.createElement("div");
+
+                patch.style.cssText = `
+                    height:35px;
+                    border:1px solid var(--border-color);
+                    background:rgba(255,255,255,${0.04 + (i % 4) * 0.04});
+                    border-radius:3px;
+                    transition:all 0.3s;
+                `;
+
+                visual.appendChild(patch);
+            }
+
+            output.innerHTML = `
+                <div style="color:#94a3b8;">
+                    [1] Loading image...
+                </div>
+            `;
+
+            const steps = [
+                "[2] Splitting image into 16×16 patches...",
+                "[3] Flattening image patches...",
+                "[4] Creating patch embeddings...",
+                "[5] Adding positional embeddings...",
+                "[6] Passing tokens through Transformer Encoder...",
+                "[7] Applying self-attention...",
+                "[8] Reading CLS token...",
+                "[9] Computing classification probabilities..."
+            ];
+
+            let index = 0;
+
+            const timer = setInterval(() => {
+
+                if (index < steps.length) {
+
+                    output.innerHTML += `
+                        <div style="color:#10b981;">
+                            ${steps[index]}
+                        </div>
+                    `;
+
+                    // Animate patches
+                    const patches = visual.children;
+
+                    if (patches[index % patches.length]) {
+                        patches[index % patches.length].style.background =
+                            "var(--accent)";
+                    }
+
+                    index++;
+
+                } else {
+
+                    clearInterval(timer);
+
+                    output.innerHTML += `
+                        <br>
+
+                        <div style="color:var(--accent);
+                                    font-weight:bold;">
+                            Classification Result
+                        </div>
+
+                        <div style="margin-top:5px;">
+                            Predicted Class:
+                            <strong>Sample Image Category</strong>
+                        </div>
+
+                        <div style="color:#94a3b8;">
+                            CLS representation → Linear Head → Prediction
+                        </div>
+                    `;
+
+                    runBtn.disabled = false;
+                    runBtn.textContent = "Run Again";
+
+                }
+
+            }, 550);
+
+        });
+
+    }, 50);
+
+    } else if (simType === 'transgan-research') {
+
+    dSimulator.innerHTML = `
+        <div style="display:flex; flex-direction:column; gap:10px;">
+
+            <div style="border-bottom:1px solid var(--border-color);
+                        padding-bottom:8px; display:flex;
+                        justify-content:space-between; align-items:center;">
+
+                <span>TransGAN CIFAR-10 Pipeline</span>
+
+                <span style="color:#10b981; font-size:0.7rem;">
+                    WGAN_GP_READY
+                </span>
+
+            </div>
+
+            <button id="transgan-run-btn"
+                class="btn btn-secondary"
+                style="padding:8px 12px; font-size:0.8rem;">
+                Run GAN Training Step
+            </button>
+
+            <div id="transgan-flow"
+                style="display:flex; flex-direction:column;
+                       gap:5px; font-size:0.72rem;">
+
+                <div id="tg-noise"
+                    style="padding:8px;
+                           background:rgba(255,255,255,0.04);
+                           border:1px solid var(--border-color);
+                           border-radius:5px;">
+                    Random Noise z
+                </div>
+
+                <div style="text-align:center; color:#64748b;">
+                    ↓
+                </div>
+
+                <div id="tg-generator"
+                    style="padding:8px;
+                           background:rgba(255,255,255,0.04);
+                           border:1px solid var(--border-color);
+                           border-radius:5px;">
+                    Transformer Generator
+                </div>
+
+                <div style="text-align:center; color:#64748b;">
+                    ↓
+                </div>
+
+                <div id="tg-fake"
+                    style="padding:8px;
+                           background:rgba(255,255,255,0.04);
+                           border:1px solid var(--border-color);
+                           border-radius:5px;">
+                    Generated CIFAR-10 Image
+                </div>
+
+                <div style="text-align:center; color:#64748b;">
+                    ↓
+                </div>
+
+                <div id="tg-discriminator"
+                    style="padding:8px;
+                           background:rgba(255,255,255,0.04);
+                           border:1px solid var(--border-color);
+                           border-radius:5px;">
+                    Transformer Discriminator
+                </div>
+
+            </div>
+
+            <div id="transgan-output"
+                style="background:rgba(0,0,0,0.55);
+                       padding:10px; border-radius:6px;
+                       font-size:0.72rem; line-height:1.5;">
+
+                Ready for adversarial training step.
+
+            </div>
+
+        </div>
+    `;
+
+    setTimeout(() => {
+
+        const runBtn = document.getElementById('transgan-run-btn');
+        const output = document.getElementById('transgan-output');
+
+        const noise = document.getElementById('tg-noise');
+        const generator = document.getElementById('tg-generator');
+        const fake = document.getElementById('tg-fake');
+        const discriminator = document.getElementById('tg-discriminator');
+
+        if (!runBtn || !output) return;
+
+        runBtn.addEventListener('click', () => {
+
+            runBtn.disabled = true;
+            runBtn.textContent = "Training...";
+
+            output.innerHTML = `
+                <div style="color:#94a3b8;">
+                    Initializing adversarial training...
+                </div>
+            `;
+
+            const nodes = [
+                noise,
+                generator,
+                fake,
+                discriminator
+            ];
+
+            nodes.forEach(node => {
+                if (node) {
+                    node.style.borderColor =
+                        "var(--border-color)";
+                }
+            });
+
+            let step = 0;
+
+            const trainingSteps = [
+
+                {
+                    text: "[1] Sampling latent vector z ∼ N(0, I)...",
+                    node: noise
+                },
+
+                {
+                    text: "[2] Transformer Generator creates synthetic image...",
+                    node: generator
+                },
+
+                {
+                    text: "[3] Generated CIFAR-10 image representation created...",
+                    node: fake
+                },
+
+                {
+                    text: "[4] Transformer Discriminator evaluates real/fake sample...",
+                    node: discriminator
+                },
+
+                {
+                    text: "[5] Computing WGAN-GP gradient penalty...",
+                    node: discriminator
+                },
+
+                {
+                    text: "[6] Updating Generator and Discriminator...",
+                    node: generator
+                }
+
+            ];
+
+            const timer = setInterval(() => {
+
+                if (step < trainingSteps.length) {
+
+                    const item = trainingSteps[step];
+
+                    output.innerHTML += `
+                        <div style="color:#10b981;">
+                            ${item.text}
+                        </div>
+                    `;
+
+                    if (item.node) {
+                        item.node.style.borderColor =
+                            "var(--accent)";
+                    }
+
+                    step++;
+
+                } else {
+
+                    clearInterval(timer);
+
+                    output.innerHTML += `
+                        <br>
+
+                        <div style="color:var(--accent);
+                                    font-weight:bold;">
+                            Training Step Complete ✓
+                        </div>
+
+                        <div style="color:#94a3b8;">
+                            Architecture:
+                            Transformer Generator + Transformer Discriminator
+                        </div>
+
+                        <div style="color:#94a3b8;">
+                            Objective:
+                            Wasserstein GAN with Gradient Penalty
+                        </div>
+                    `;
+
+                    runBtn.disabled = false;
+                    runBtn.textContent = "Run Another Training Step";
+                }
+
+            }, 600);
+
+        });
+
+    }, 50);
 
         } else if (simType === 'medimitra') {
             dSimulator.innerHTML = `
