@@ -334,9 +334,9 @@ document.addEventListener('DOMContentLoaded', () => {
         medimitra: {
             title: "MediMitra",
             category: "Mobile Health",
-            tags: ["Flutter", "Firebase", "Push Alert", "UX Design"],
-            description: "MediMitra is a cross-platform mobile application built to enhance medical adherence. Integrating Flutter and Firebase, it handles medication calendars, schedules, and sends real-time push alerts to patients for dosage compliance.",
-            tech: ["Flutter (Dart)", "Firebase Firestore", "Cloud Messaging", "Local Notifications"],
+            tags: ["react", "Firebase", "Push Alert", "UX Design"],
+            description: "MediMitra is a cross-platform mobile application built to enhance medical adherence. Integrating react and Firebase, it handles medication calendars, schedules, and sends real-time push alerts to patients for dosage compliance.",
+            tech: ["react (Dart)", "Firebase Firestore", "Cloud Messaging", "Local Notifications"],
             link: "https://github.com",
             simulator: "medimitra"
         },
@@ -869,7 +869,7 @@ document.addEventListener('DOMContentLoaded', () => {
             dSimulator.innerHTML = `
                 <div style="display:flex; flex-direction:column; gap:10px;">
                     <div style="border-bottom:1px solid var(--border-color); padding-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
-                        <span>MediMitra Flutter Mobile Panel</span>
+                        <span>MediMitra react Mobile Panel</span>
                     </div>
                     <div style="display:flex; gap:6px;">
                         <input type="text" id="med-name" placeholder="Aspirin / Multi-Vit" style="flex-grow:1; background:rgba(0,0,0,0.3); border:1px solid var(--border-color); color:white; padding:6px 10px; border-radius:6px; font-size:0.8rem;">
@@ -1074,7 +1074,7 @@ Contact: sheetalbajaj2025@gmail.com`,'system-line');
 1. VyomDarpan: Astronomical alignment trigonometry modeler.
 2. SAKSHYA: Legal judgment PDF parsing & AI analysis.
 3. InstantBI: Plain English NLP database dashboard.
-4. MediMitra: Flutter/Firebase medicine alert client.
+4. MediMitra: react/Firebase medicine alert client.
 5. EkaSruti: Multilingual speech audio transcription translation.`, 'system-line');
                 break;
 
