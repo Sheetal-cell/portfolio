@@ -105,7 +105,12 @@ document.addEventListener('DOMContentLoaded', () => {
         linkedinLinks.forEach(a => a.href = USER_CONFIG.profile.linkedin);
 
         const githubLinks = document.querySelectorAll('a[href*="github.com"]');
-        githubLinks.forEach(a => a.href = USER_CONFIG.profile.github);
+        githubLinks.forEach(a => {
+            // Preserve repository links inside project cards; only update social/profile links.
+            if (!a.closest('.project-card')) {
+                a.href = USER_CONFIG.profile.github;
+            }
+        });
 
         const gfgLinks = document.querySelectorAll('a[href*="geeksforgeeks.org"]');
         gfgLinks.forEach(a => a.href = USER_CONFIG.profile.gfg);
