@@ -130,6 +130,8 @@ document.addEventListener('DOMContentLoaded', () => {
         Object.entries(USER_CONFIG.projects).forEach(([projId, config]) => {
 
     if (projectsData[projId]) {
+        projectsData[projId].codeLink = config.codeLink || "";
+        projectsData[projId].demoLink = config.demoLink || "";
         projectsData[projId].link =
             config.demoLink || config.codeLink || "";
     }
@@ -864,7 +866,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const dSimulator = document.getElementById('drawer-simulator');
 
     projCards.forEach(card => {
-        card.addEventListener('click', () => {
+        card.addEventListener('click', (event) => {
+            // Let project links and other controls work without opening the details drawer.
+            if (event.target.closest('a, button, input, textarea, select, label')) return;
+
             const projId = card.getAttribute('data-project-id');
             const data = projectsData[projId];
             if (data) {
@@ -882,13 +887,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function openProjectDrawer(data) {
-        dTitle.textContent = data.title;
-        dCategory.textContent = data.category;
-        dFullDesc.textContent = data.description;
+        dTitle.textContent = data.title || "Project";
+        dCategory.textContent = data.category || data.subtitle || "Project Details";
+        dFullDesc.textContent = data.description || "Project details will be added soon.";
 
         // Tags
         dTags.innerHTML = '';
-        data.tags.forEach(tag => {
+        (data.tags || []).forEach(tag => {
             const span = document.createElement('span');
             span.className = 'tag';
             span.textContent = tag;
@@ -897,16 +902,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Tech specs
         dTechList.innerHTML = '';
-        data.tech.forEach(t => {
+        (data.tech || data.tags || []).forEach(t => {
             const li = document.createElement('li');
             li.textContent = t;
             dTechList.appendChild(li);
         });
 
-        // External Link
+        // Keep source-code and live-demo links separately accessible.
+        const drawerDemoAction = document.getElementById('drawer-demo-action');
+        const sourceUrl = data.codeLink || data.link || "";
+        const demoUrl = data.demoLink || "";
+
         drawerLinkAction.onclick = () => {
-            window.open(data.link, '_blank');
+            if (sourceUrl) window.open(sourceUrl, '_blank', 'noopener,noreferrer');
         };
+        drawerLinkAction.style.display = sourceUrl ? '' : 'none';
+        drawerLinkAction.querySelector('span').textContent = 'View Source Code';
+
+        if (drawerDemoAction) {
+            drawerDemoAction.onclick = () => {
+                if (demoUrl) window.open(demoUrl, '_blank', 'noopener,noreferrer');
+            };
+            drawerDemoAction.style.display = demoUrl ? '' : 'none';
+        }
 
         // Render project simulator
         renderSimulator(data.simulator);
