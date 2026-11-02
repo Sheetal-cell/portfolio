@@ -71,8 +71,8 @@ const USER_CONFIG = {
             fileLink: "certificates/postman25.pdf",
 
         },
-        cisco25: {
-            fileLink: "certificates/cisco25.jpg",
+        ibm_da: {
+            fileLink: "certificates/IBM_DA.jpg",
 
         },
         ideathon: {
