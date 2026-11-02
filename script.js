@@ -49,9 +49,9 @@ const USER_CONFIG = {
             codeLink: "https://github.com/Sheetal-cell/MediMitra", // Replace with original MediMitra repository link
             demoLink: "https://medi-mitra-two.vercel.app/"
         },
-        ekasruti: {
-            codeLink: "https://github.com/Sheetal-cell/Ekasruti-Main-Landing", // Replace with original EkaSruti repository link
-            demoLink: "https://ekasruti-bigbugs.vercel.app/"
+        aimit: {
+            codeLink: "https://github.com/Sheetal-cell/AimIt",
+            demoLink: "https://aim-it-six.vercel.app/"
         }
     },
     certificates: {
@@ -505,19 +505,16 @@ document.addEventListener('DOMContentLoaded', () => {
         simulator: "medimitra"
     },
 
-    ekasruti: {
-        title: "EkaSruti",
-        subtitle: "AI Speech-to-Multilingual Captioning System",
+    aimit: {
+        title: "AimIt",
+        category: "Full-Stack Goal & Productivity Platform",
+        tags: ["Goal Tracking", "Task Management", "Weekly Planner", "Progress Analytics", "JWT Authentication", "Full Stack"],
         description:
-            "An AI system that converts live speech into multilingual captions using speech recognition and NLP, designed to improve accessibility and real-time communication.",
-        tags: [
-            "Speech Recognition",
-            "NLP",
-            "AI",
-            "Accessibility"
-        ],
-        link: "https://ekasruti-bigbugs.vercel.app/",
-        simulator: "ekasruti"
+            "AimIt is a full-stack personal productivity platform that connects long-term goals with focused daily execution. Users can create goals and milestones, organise dated tasks, set priorities and recurring schedules, plan a seven-day week, review completion history and consistency streaks, track focus with a stopwatch, and define personal daily or weekly rewards. It supports individual accounts with email/password and Google OAuth sign-in, password reset and change flows, profile themes, and account-level data ownership. The application also provides date-filtered Excel task reports. The React frontend communicates with a FastAPI REST backend, which validates requests, enforces authenticated user context, and persists application records in PostgreSQL.",
+        tech: ["React", "TypeScript", "Vite", "Python", "FastAPI", "PostgreSQL", "SQLAlchemy", "Pydantic", "JWT Authentication", "Password Hashing", "Google OAuth / OpenID Connect", "Docker Compose", "OpenPyXL", "Vercel", "Render"],
+        codeLink: "https://github.com/Sheetal-cell/AimIt",
+        demoLink: "https://aim-it-six.vercel.app/",
+        simulator: "aimit"
     },
 
     "vit-research": {
@@ -1857,73 +1854,44 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }, 50);
 
-        } else if (simType === 'ekasruti') {
+        } else if (simType === 'aimit') {
             dSimulator.innerHTML = `
                 <div style="display:flex; flex-direction:column; gap:10px;">
-                    <div style="border-bottom:1px solid var(--border-color); padding-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
-                        <span>EkaSruti Audio Translation Bus</span>
+                    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-color); padding-bottom:8px;">
+                        <strong>AimIt · Daily Focus Planner</strong>
+                        <span style="color:#10b981; font-size:0.7rem; font-weight:bold;">DEMO MODE</span>
                     </div>
-                    <button class="btn btn-secondary" id="rec-btn" style="padding:8px 12px; font-size:0.8rem; justify-content:center;">
-                        <i data-lucide="mic" style="width:14px; height:14px; color:#ef4444;"></i> Start Recording Speech
-                    </button>
-                    <div id="subtitle-out" style="height:100px; display:flex; flex-direction:column; justify-content:center; align-items:center; background:rgba(0,0,0,0.6); border-radius:6px; font-size:0.75rem; color:#64748b; padding:10px; text-align:center; line-height:1.5;">
-                        Click mic to stream audio captions translation.
+                    <div style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px;">
+                        <div style="padding:8px; border:1px solid var(--border-color); border-radius:6px; text-align:center;"><div style="font-size:0.65rem; color:#94a3b8;">GOALS</div><strong>3</strong></div>
+                        <div style="padding:8px; border:1px solid var(--border-color); border-radius:6px; text-align:center;"><div style="font-size:0.65rem; color:#94a3b8;">TASKS DONE</div><strong id="aimit-done-count">1 / 3</strong></div>
+                        <div style="padding:8px; border:1px solid var(--border-color); border-radius:6px; text-align:center;"><div style="font-size:0.65rem; color:#94a3b8;">STREAK</div><strong>5 days</strong></div>
                     </div>
+                    <div style="font-size:0.75rem; color:#94a3b8;">TODAY'S PRIORITIES · Toggle tasks to update progress</div>
+                    <div style="display:flex; flex-direction:column; gap:7px;">
+                        <label style="display:flex; align-items:center; gap:8px; padding:9px; border:1px solid var(--border-color); border-radius:6px; font-size:0.78rem;"><input type="checkbox" class="aimit-task-check" checked> Review DBMS notes <span style="margin-left:auto; color:#10b981;">Done</span></label>
+                        <label style="display:flex; align-items:center; gap:8px; padding:9px; border:1px solid var(--border-color); border-radius:6px; font-size:0.78rem;"><input type="checkbox" class="aimit-task-check"> Solve 3 DSA problems <span style="margin-left:auto; color:#fbbf24;">High</span></label>
+                        <label style="display:flex; align-items:center; gap:8px; padding:9px; border:1px solid var(--border-color); border-radius:6px; font-size:0.78rem;"><input type="checkbox" class="aimit-task-check"> Work on project milestone <span style="margin-left:auto; color:#94a3b8;">Medium</span></label>
+                    </div>
+                    <div style="height:8px; background:rgba(255,255,255,0.08); border-radius:10px; overflow:hidden;"><div id="aimit-progress-bar" style="height:100%; width:33.33%; background:var(--accent); transition:width .25s;"></div></div>
+                    <div id="aimit-progress-label" style="font-size:0.72rem; color:#94a3b8;">Daily completion: 1 of 3 tasks · 33%</div>
+                    <div style="font-size:0.7rem; color:#94a3b8;">Illustrative front-end simulation; changes here are not saved to an AimIt account.</div>
                 </div>
             `;
 
             setTimeout(() => {
-                const recBtn = document.getElementById('rec-btn');
-                const subOut = document.getElementById('subtitle-out');
-
-                if (recBtn && subOut) {
-                    let active = false;
-                    let capIndex = 0;
-                    let capTimer = null;
-                    const captions = [
-                        { en: "Hello, thank you for checking my project portfolio.", hi: "नमस्ते, मेरी परियोजना पोर्टफोलियो देखने के लिए धन्यवाद।" },
-                        { en: "I focus on developing backend engines and Machine Learning solutions.", hi: "मैं बैकएंड इंजन और मशीन लर्निंग समाधान विकसित करने पर ध्यान केंद्रित करती हूँ।" },
-                        { en: "EkaSruti transforms speech to multilingual captions instantly.", hi: "एकास्रुति भाषण को तुरंत बहुभाषी उपशीर्षक में बदल देता है।" }
-                    ];
-
-                    recBtn.addEventListener('click', () => {
-                        if (active) {
-                            // Stop
-                            clearInterval(capTimer);
-                            active = false;
-                            recBtn.innerHTML = '<i data-lucide="mic" style="width:14px; height:14px; color:#ef4444;"></i> Start Recording Speech';
-                            subOut.innerHTML = 'Speech processing closed.';
-                            subOut.style.color = '#64748b';
-                            lucide.createIcons();
-                        } else {
-                            // Start
-                            active = true;
-                            recBtn.innerHTML = '<span>Streaming Audio...</span>';
-                            subOut.style.color = 'white';
-                            subOut.innerHTML = '<i>Listening... Speak now...</i>';
-                            capIndex = 0;
-
-                            function showCaps() {
-                                if (capIndex < captions.length) {
-                                    subOut.innerHTML = `
-                                        <div style="font-size:0.85rem; margin-bottom:6px; color:var(--accent);">
-                                            <strong>[EN]:</strong> "${captions[capIndex].en}"
-                                        </div>
-                                        <div style="font-size:0.85rem; color:#fbbf24;">
-                                            <strong>[HI]:</strong> "${captions[capIndex].hi}"
-                                        </div>
-                                    `;
-                                    capIndex++;
-                                } else {
-                                    capIndex = 0; // Loop
-                                }
-                            }
-                            // Show first immediately
-                            setTimeout(showCaps, 800);
-                            capTimer = setInterval(showCaps, 3000);
-                        }
-                    });
-                }
+                const checks = Array.from(dSimulator.querySelectorAll('.aimit-task-check'));
+                const count = document.getElementById('aimit-done-count');
+                const bar = document.getElementById('aimit-progress-bar');
+                const label = document.getElementById('aimit-progress-label');
+                const updateProgress = () => {
+                    const done = checks.filter(check => check.checked).length;
+                    const percent = Math.round((done / checks.length) * 100);
+                    count.textContent = done + ' / ' + checks.length;
+                    bar.style.width = percent + '%';
+                    label.textContent = 'Daily completion: ' + done + ' of ' + checks.length + ' tasks · ' + percent + '%';
+                };
+                checks.forEach(check => check.addEventListener('change', updateProgress));
+                updateProgress();
             }, 50);
         }
     }
