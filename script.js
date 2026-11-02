@@ -463,8 +463,15 @@ document.addEventListener('DOMContentLoaded', () => {
     sakshya: {
         title: "SAKSHYA",
         subtitle: "AI Legal Document Analysis Platform",
+        category: "AI LegalTech / Retrieval-Augmented Generation",
         description:
-            "An AI-powered legal document analysis platform that processes court judgment PDFs and extracts directives, compliance requirements, appeal recommendations, and risk indicators.",
+            "SAKSHYA is an AI-powered legal document analysis platform that combines court-judgment understanding with Retrieval-Augmented Generation (RAG). It extracts page-aware chunks from uploaded judgment PDFs, generates semantic embeddings using OpenAI text-embedding-3-small, and stores searchable vectors in Qdrant. For document-grounded conversations, it retrieves the top five semantically relevant passages and supplies them as context, preserving page references for traceable answers. Retrieval is scoped to the relevant user and document, including guest document isolation. The platform also supports judgment analysis for directives, compliance requirements, appeal recommendations, and potential risk indicators, alongside conversational legal assistance.",
+        tech: [
+            "React", "Vite", "Node.js", "Express", "MySQL",
+            "Retrieval-Augmented Generation (RAG)", "Qdrant",
+            "OpenAI text-embedding-3-small", "Semantic Search",
+            "Page-Aware PDF Chunking", "PDF Processing", "OpenRouter", "GPT-4o mini"
+        ],
         tags: [
             "AI",
             "NLP",
